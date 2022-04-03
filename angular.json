@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/coreui-free-angular-admin-template",
+            "outputPath": "dist/Nisswars",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -115,5 +115,5 @@
       }
     }
   },
-  "defaultProject": "coreui-free-angular-admin-template"
+  "defaultProject": "Nisswars"
 }

@@ -195,8 +195,4 @@ Step 3: Click on the bucket nisswar-webapp-1
 step 4: Delete all objects 
 step 5: Click Upload
 step 6: Click add files
-step 7: Add all items inside dist/Nisswars folder
-step 8: Click add folder
-step 9: Upload dist/Nisswars/assets folder
-step 10: Under Permissions -> ACL - > Choose from predefined ACLs - > Grant public-read access -> Check the checkbox
-step : Navigate to http://nisswar-webapp-1.s3-website-ap-southeast-1.amazonaws.com/ to see the application
+step 7: Add all items inside dist/Nisswars folder - [use Add Files not Add Folder]
