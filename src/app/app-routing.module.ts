@@ -22,6 +22,11 @@ const routes: Routes = [
     },
     children: [
       {
+        path: 'randomizer',
+        loadChildren: () =>
+          import('./views/randomizer/randomizer.module').then((m) => m.RandomizerModule)
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
