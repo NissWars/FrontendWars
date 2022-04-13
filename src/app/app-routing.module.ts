@@ -6,11 +6,12 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { accountCreationComponent } from './views/pages/accountCreation/accountCreation.component'; //kerrichanged
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login', //kerrichanged
     pathMatch: 'full'
   },
   {
@@ -98,6 +99,13 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  { //kerrichanged
+    path: 'accountCreation',
+    component: accountCreationComponent,
+    data: {
+      title: 'Account Creation Page'
     }
   },
   {path: '**', redirectTo: 'dashboard'}

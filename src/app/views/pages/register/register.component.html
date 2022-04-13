@@ -17,6 +17,12 @@
                 <span cInputGroupText>@</span>
                 <input autoComplete="email" cFormControl placeholder="Email" />
               </c-input-group>
+              <c-input-group class="mb-3"> <!--kerrichanged-->
+                <span cInputGroupText>
+                  <svg cIcon name="dob"></svg>
+                </span>
+                <input autoComplete="dob" cFormControl placeholder="Date of Birth" />
+              </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
@@ -30,9 +36,12 @@
                 <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
               </c-input-group>
               <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+                <button cButton color="success" routerLink="/accountCreation">Create Account</button> <!--kerrichanged-->
               </div>
             </form>
+            <button cButton class="px-0" color="link" routerLink="/login"> <!--kerrichanged-->
+              Already registered? Click here to Login
+            </button>
           </c-card-body>
         </c-card>
       </c-col>
