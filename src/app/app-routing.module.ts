@@ -10,7 +10,7 @@ import { RegisterComponent } from './views/pages/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'randomizer',
+    redirectTo: 'rewardShop',
     pathMatch: 'full'
   },
   {
@@ -20,6 +20,11 @@ const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path: 'rewardShop',
+        loadChildren: () =>
+          import('./views/rewards/shop/rewardShop.module').then((m) => m.RewardShopModule)
+      },
       {
         path: 'randomizer',
         loadChildren: () =>
