@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { IconModule } from '@coreui/icons-angular';
+import { WalletRoutingModule } from './wallet-routing.module';
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -12,18 +13,15 @@ import {
   ProgressModule,
   TableModule,
   TabsModule,
+  PaginationModule,
 } from '@coreui/angular';
-import { RandomizerRoutingModule } from './randomizer-routing.module';
-import { RandomizerComponent } from './randomizer.component';
-
+import { WalletComponent } from './wallet.component';
 
 @NgModule({
-  declarations: [
-    RandomizerComponent,
-  ],
+  declarations: [WalletComponent],
   imports: [
     CommonModule,
-    RandomizerRoutingModule,
+    WalletRoutingModule,
     AvatarModule,
     ButtonGroupModule,
     ButtonModule,
@@ -34,7 +32,8 @@ import { RandomizerComponent } from './randomizer.component';
     ProgressModule,
     TableModule,
     TabsModule,
-    FormsModule
+    PaginationModule,
+    IconModule
   ]
 })
-export class RandomizerModule { }
+export class WalletModule { }

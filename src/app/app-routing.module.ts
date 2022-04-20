@@ -21,6 +21,11 @@ const routes: Routes = [
     },
     children: [
       {
+        path: 'wallet',
+        loadChildren: () =>
+          import('./views/wallet/wallet.module').then((m) => m.WalletModule)
+      },
+      {
         path: 'randomizer',
         loadChildren: () =>
           import('./views/randomizer/randomizer.module').then((m) => m.RandomizerModule)

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
+import {WalletComponent} from './wallet.component';
 import { RouterModule, Routes } from '@angular/router';
-import { RandomizerComponent } from './randomizer.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: RandomizerComponent
+    component: WalletComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RandomizerRoutingModule { }
+export class WalletRoutingModule { }
