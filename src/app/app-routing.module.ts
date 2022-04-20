@@ -7,11 +7,13 @@ import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { accountCreationComponent } from './views/pages/accountCreation/accountCreation.component'; //kerrichanged
+import { getPasswordComponent } from './views/pages/getPassword/getPassword.component'; //kerrichanged
+import { registerOrganizerComponent } from './views/pages/registerOrganizer/registerOrganizer.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login', //kerrichanged
+    redirectTo: 'login', //kerrichanged 
     pathMatch: 'full'
   },
   {
@@ -111,6 +113,20 @@ const routes: Routes = [
     component: accountCreationComponent,
     data: {
       title: 'Account Creation Page'
+    }
+  },
+  { //kerrichanged
+    path: 'getPassword',
+    component: getPasswordComponent,
+    data: {
+      title: 'Get Password Page'
+    }
+  },
+  { //kerrichanged
+    path: 'registerOrganizer',
+    component: registerOrganizerComponent,
+    data: {
+      title: 'Register Organizer Page'
     }
   },
   {path: '**', redirectTo: 'dashboard'}

@@ -1,8 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
+
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+//import {matCardModule} from '@angular/material/card'; //kerrichangedvalidate
+//import {matButtonModule} from '@angular/material/button'; //kerrichangedvalidate
+//import {matInputModule} from '@angular/material/input'; //kerrichangedvalidate
+//import {matIconModule} from '@angular/material/icon'; //kerrichangedvalidate
+//import { RegisterComponent } from './views/pages/register/register.component'; //kerrichangedvalidate
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -59,6 +65,11 @@ const APP_CONTAINERS = [
 @NgModule({
   declarations: [AppComponent, ...APP_CONTAINERS],
   imports: [
+   // matCardModule, //kerrichangedvalidate
+   // matButtonModule, //kerrichangedvalidate
+   // matInputModule, //kerrichangedvalidate
+   // matIconModule, //kerrichangedvalidate
+   // RegisterComponent, //kerrichangedvalidate
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

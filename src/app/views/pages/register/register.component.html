@@ -4,40 +4,79 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
-              <h1>Register</h1>
-              <p class="text-medium-emphasis">Create your account</p>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>@</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
-              </c-input-group>
-              <c-input-group class="mb-3"> <!--kerrichanged-->
-                <span cInputGroupText>
-                  <svg cIcon name="dob"></svg>
-                </span>
-                <input autoComplete="dob" cFormControl placeholder="Date of Birth" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
-              </c-input-group>
-              <c-input-group class="mb-4">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
-              </c-input-group>
-              <div class="d-grid">
-                <button cButton color="success" routerLink="/accountCreation">Create Account</button> <!--kerrichanged-->
-              </div>
+
+            <form #customStylesForm="ngForm"
+            (ngSubmit)="onSubmit1()"
+            [gutter]="3"
+            [validated]="customStylesValidated"
+            novalidate
+            cForm cRow
+            class="needs-validation">
+
+            <h1>Register</h1>
+              <p class="text-medium-emphasis">Create a User account</p>
+
+            <c-col [md]="4">
+            <label cLabel for="validationCustom01">First name</label>
+            <input cFormControl id="validationCustom01" required type="text" />
+            <c-form-feedback [valid]="false">Please enter a First Name</c-form-feedback>
+            </c-col>
+          
+            <div>
+            <c-col [md]="4">
+            <label cLabel for="validationCustom02">Last name</label>
+            <input cFormControl id="validationCustom02" required type="text" />
+            <c-form-feedback [valid]="false">Please enter a Last Name</c-form-feedback>
+            </c-col>
+          </div>
+
+            <c-col [md]="4">
+            <label cLabel for="validationCustomUsername">Username</label>
+            <c-input-group class="has-validation">
+            <span cInputGroupText id="inputGroupPrepend">@</span>
+            <input aria-describedby="inputGroupPrepend" cFormControl id="validationCustomUsername" required type="text"/>
+            <c-form-feedback [valid]="false">Please enter a Username</c-form-feedback>
+            </c-input-group>
+            </c-col>
+
+            <div>
+              <c-col [md]="4">
+              <label cLabel for="validationMobile">Mobile</label>
+              <input cFormControl id="validationMobile" required type="mobile_number" required ng-pattern="/^[7-9][0-9]{9}$/"/>
+              <c-form-feedback [valid]="false">Please enter a valid Mobile Number</c-form-feedback>
+              </c-col>
+            </div>
+
+            <c-col [md]="6">
+            <label cLabel for="validationCustom03">DOB</label>
+            <input cFormControl id="validationCustom03" required type="text" />
+            <c-form-feedback [valid]="false">Please enter a valid Date of Birth</c-form-feedback>
+            </c-col>
+            <c-col [md]="3">
+            <label cLabel for="validationCustom04">Email</label>
+            <input cFormControl id="validationCustom04" required type="email" required ng-pattern= required ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/" />
+            <c-form-feedback [valid]="false">Please enter a valid Email</c-form-feedback>
+            </c-col>
+            <c-col [md]="3">
+            <label cLabel for="validationCustom05">Password</label>
+            <input cFormControl id="validationCustom05" required type="text" />
+            <c-form-feedback [valid]="false">Please enter a valid password</c-form-feedback>
+            </c-col>
+            <c-col [xs]="12">
+            <c-form-check>
+            <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+            <label cFormCheckLabel for="invalidCheck">Agree to terms and conditions</label>
+            </c-form-check>
+            <c-form-feedback [valid]="false">You must agree before submitting</c-form-feedback>
+            </c-col>
+            <c-col [xs]="12">
+            <button cButton class="me-1" color="primary" type="submit">
+              Submit form
+            </button>
+            <button (click)="onReset1()" cButton color="secondary" type="reset">
+              Reset
+            </button>
+            </c-col>
             </form>
             <button cButton class="px-0" color="link" routerLink="/login"> <!--kerrichanged-->
               Already registered? Click here to Login
@@ -48,3 +87,5 @@
     </c-row>
   </c-container>
 </div>
+
+
