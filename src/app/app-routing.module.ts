@@ -26,6 +26,11 @@ const routes: Routes = [
           import('./views/rewards/shop/rewardShop.module').then((m) => m.RewardShopModule)
       },
       {
+        path: 'wallet',
+        loadChildren: () =>
+          import('./views/wallet/wallet.module').then((m) => m.WalletModule)
+      },
+      {
         path: 'randomizer',
         loadChildren: () =>
           import('./views/randomizer/randomizer.module').then((m) => m.RandomizerModule)

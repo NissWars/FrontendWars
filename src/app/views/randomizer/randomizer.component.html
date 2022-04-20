@@ -1,56 +1,103 @@
 <script type="text/javascript">alert("this works")</script> 
 <c-row>
 <c-col [md]="3" class="position-absolute top-16 start-16">
-    <c-card class="mh-100" style="width: 250px;height: 330px">
-        <img class="rounded border border-3 border-warning" style="width: 250px;height: 330px" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
-        <c-card-body >
-            <h5 cCardTitle hidden="true">Card title</h5>
-            <p cCardText hidden="true">
-                Example of content
-            </p>
-        </c-card-body>
+    <c-card class="mh-100" style="width: 250px;height: 330px;">
+        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
+        <c-card-img-overlay *ngIf="randomTriggered">
+            <c-card-body >
+                <h5 cCardTitle style="color: black;">Event Name</h5>
+                <p cCardText *ngIf="participants1==0;">
+                    Unrated
+                </p>
+                <p cCardText *ngIf="participants1>0;">
+                    Number of stars:
+                </p>
+                <p cCardText *ngIf="participants1>0;">
+                    Total past partipants: {{participants1}} <br>
+                </p>
+                <p cCardText *ngIf="participants1==0;" style="font-family: Impact">
+                    New Event!!!! <br>
+                </p>
+                <p cCardText *ngIf="cost1>0;">
+                    Cost of Event($): {{cost1}}<br>
+                </p>
+                <p cCardText *ngIf="cost1==0;">
+                    Cost of Event($): Free<br>
+                </p>
+                <p cCardText>
+                    Number of points: {{participants1}} <br>
+                </p>
+            </c-card-body>
+        </c-card-img-overlay>
     </c-card>
 </c-col>
 <c-col [md]="3" class="position-absolute top-16 start-40">
-    <c-card class="mh-100" style="width: 250px;height: 330px">
-        <img class="rounded border border-3 border-warning" style="width: 250px;height: 330px" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
-        <c-card-body >
-            <h5 cCardTitle hidden="true">Card title</h5>
-            <p cCardText hidden="true">
-                Example of content
-            </p>
-        </c-card-body>
+    <c-card class="mh-100" style="width: 250px;height: 330px;">
+        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
+        <c-card-img-overlay *ngIf="randomTriggered">
+            <c-card-body >
+                <h5 cCardTitle style="color: black;">Event Name</h5>
+                <p cCardText *ngIf="participants2==0;">
+                    Unrated
+                </p>
+                <p cCardText *ngIf="participants2>0;">
+                    Number of stars:
+                </p>
+                <p cCardText *ngIf="participants2>0;">
+                    Total past partipants: {{participants2}} <br>
+                </p>
+                <p cCardText *ngIf="participants2==0;" style="font-family: Impact">
+                    New Event!!!! <br>
+                </p>
+                <p cCardText *ngIf="cost2>0;">
+                    Cost of Event($): {{cost2}}<br>
+                </p>
+                <p cCardText *ngIf="cost2==0;">
+                    Cost of Event($): Free<br>
+                </p>
+                <p cCardText>
+                    Number of points: {{participants2}} <br>
+                </p>
+            </c-card-body>
+        </c-card-img-overlay>
     </c-card>
 </c-col>
 <c-col [md]="3" class="position-absolute top-16 start-64">
-    <c-card class="mh-100" style="width: 250px;height: 330px">
-        <img class="rounded border border-3 border-warning" style="width: 250px;height: 330px;opacity: 0.2;" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
-        <c-card-img-overlay>
-        <c-card-body >
-            <h5 cCardTitle style="color: black;">Event Name</h5>
-            <p cCardText>
-                Number of stars:
-            </p>
-            <p cCardText *ngIf="cost3>0;">
-                Number of partipants: {{participants3}} <br>
-                Cost of Event($): {{cost3}}
-            </p>
-            <p cCardText *ngIf="cost3==0;">
-                Number of partipants: {{participants3}} <br>
-                Cost of Event($): Free
-            </p>
-        </c-card-body>
+    <c-card class="mh-100" style="width: 250px;height: 330px;">
+        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
+        <c-card-img-overlay *ngIf="randomTriggered">
+            <c-card-body >
+                <h5 cCardTitle style="color: black;">Event Name</h5>
+                <p cCardText *ngIf="participants3==0;">
+                    Unrated
+                </p>
+                <p cCardText *ngIf="participants3>0;">
+                    Number of stars:
+                </p>
+                <p cCardText *ngIf="participants3>0;">
+                    Total past partipants: {{participants3}} <br>
+                </p>
+                <p cCardText *ngIf="participants3==0;" style="font-family: Impact">
+                    New Event!!!! <br>
+                </p>
+                <p cCardText *ngIf="cost3>0;">
+                    Cost of Event($): {{cost3}}<br>
+                </p>
+                <p cCardText *ngIf="cost3==0;">
+                    Cost of Event($): Free<br>
+                </p>
+                <p cCardText>
+                    Number of points: {{participants3}} <br>
+                </p>
+            </c-card-body>
         </c-card-img-overlay>
     </c-card>
 </c-col>
 </c-row>
-<script>
-    console.log("hi");
-</script>
 <label class="position-absolute top-72 end-47" style="font-family:Franklin Gothic Medium;font-size:20px">Availability:</label>
 <label class="position-absolute top-77 end-57" style="font-family:'Segoe UI';font-size:20px">From</label>
 <label class="position-absolute top-77 end-416" style="font-family:'Segoe UI';font-size:20px">To</label>
-<input type="date" [min]="minFromDate" [value]="minFromDate" class="position-absolute top-82 end-53" />
-<input type="date" [min]="minToDate" [value]="minToDate" class="position-absolute top-82 end-37" />
-<button cButton color="primary" size="lg" class="position-absolute top-90 end-428 rounded-pill" style="width: 200px;height: 40px;text-align:center;line-height:1em;background-color: lightseagreen;border-color:lightskyblue">Randomize</button>
-<button cButton size="sm" class="position-absolute top-11 end-10 rounded-0" style="width: 63px;height: 30px;text-align:center;line-height:1em;background-color:	#C0C0C0;border-color:grey;font-size:13px;color:#2E2E2E">Refresh</button>
+<input type="date" [min]="minFromDate" [(ngModel)]="minFromDate" (change)="valueChange()"  [disabled]="randomTriggered" class="position-absolute top-82 end-53" />
+<input type="date" [min]="minToDate" [(ngModel)]="minToDate" [disabled]="randomTriggered" class="position-absolute top-82 end-37" />
+<button cButton color="primary" size="lg" (click)="onRandomize()" class="position-absolute top-90 end-46 rounded-pill" *ngIf="!randomTriggered">Randomize</button>
+<button cButton *ngIf="randomTriggered" (click)="onRefresh()" size="sm" class="position-absolute top-11 end-10 rounded-0 btn-outline-light" style="width: 63px;height: 30px;text-align:center;line-height:1em;background-color:	#C0C0C0;border-color:grey;font-size:13px;color:#2E2E2E;outline:none">Refresh</button>
