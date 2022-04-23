@@ -6,6 +6,8 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { FeedbackComponent } from './views/feedback/feedback.component';
+import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
 
 const routes: Routes = [
   {
@@ -13,12 +15,24 @@ const routes: Routes = [
     redirectTo: 'randomizer',
     pathMatch: 'full'
   },
+
+  {
+    path: 'feedback', component: FeedbackComponent
+
+  },
+
+  {
+    path: 'viewfeedback', component: ViewFeedbacksComponent
+
+  },
+
   {
     path: '',
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
     },
+
     children: [
       {
         path: 'randomizer',

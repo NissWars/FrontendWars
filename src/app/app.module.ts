@@ -45,6 +45,8 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { FeedbackComponent } from './views/feedback/feedback.component';
+import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -57,7 +59,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, FeedbackComponent, ViewFeedbacksComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
