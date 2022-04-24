@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -32,7 +33,8 @@ import { RandomizerComponent } from './randomizer.component';
     NavModule,
     ProgressModule,
     TableModule,
-    TabsModule
+    TabsModule,
+    FormsModule
   ]
 })
 export class RandomizerModule { }

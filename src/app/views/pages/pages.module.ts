@@ -6,6 +6,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
+
+import { accountCreationComponent } from './accountCreation/accountCreation.component'; //kerrichanged
+import { getPasswordComponent } from './getPassword/getPassword.component'; //kerrichanged
+import { registerOrganizerComponent } from './registerOrganizer/registerOrganizer.component'; //kerrichanged
+import { FormsModule } from '@angular/forms'; //kerrichanged
+
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
@@ -15,7 +21,10 @@ import { IconModule } from '@coreui/icons-angular';
     LoginComponent,
     RegisterComponent,
     Page404Component,
-    Page500Component
+    Page500Component,
+    accountCreationComponent, //kerrichanged
+    getPasswordComponent, //kerrichanged
+    registerOrganizerComponent //kerrichanged
   ],
   imports: [
     CommonModule,
@@ -24,7 +33,8 @@ import { IconModule } from '@coreui/icons-angular';
     ButtonModule,
     GridModule,
     IconModule,
-    FormModule
+    FormModule,
+    FormsModule //kerrichanged
   ]
 })
 export class PagesModule {

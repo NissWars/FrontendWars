@@ -1,1 +1,47 @@
-<p>feedback works!</p>
+
+
+
+
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmitFeedBack(form)">
+
+        <mat-card-title> Thank you for Participating</mat-card-title>
+
+        <mat-card-subtitle>Please give the event a rating out of 5</mat-card-subtitle>
+
+        <mat-star-rating  [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
+
+        <mat-form-field class="full-width-input">
+            <textarea matInput type="text" placeholder="Comments on the event" formControlName="comments" required></textarea>
+            <mat-error>
+              Comments is required
+            </mat-error>
+          </mat-form-field>
+
+          <div class="form-group">
+            <label for="file">File</label>
+            <input 
+                formControlName="file"
+                id="file" 
+                type="file" 
+                class="form-control"
+                (change)="onFileChange($event)"
+                required>
+
+              <div *ngIf="form.get('file').touched && form.get('file').invalid" class="alert alert-danger">
+                  <div >File is required.</div>
+              </div>
+
+          </div>
+        
+        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+
+
+          <div class="action-button">
+            <button mat-raised-button  [disabled]="!form.valid" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
+          </div>
+      </form>
+    </mat-card-content>
+  </mat-card>

@@ -8,22 +8,15 @@ import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { FeedbackComponent } from './views/feedback/feedback.component';
 import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
+import { accountCreationComponent } from './views/pages/accountCreation/accountCreation.component'; //kerrichanged
+import { getPasswordComponent } from './views/pages/getPassword/getPassword.component'; //kerrichanged
+import { registerOrganizerComponent } from './views/pages/registerOrganizer/registerOrganizer.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'randomizer',
+    redirectTo: 'login', //kerrichanged 
     pathMatch: 'full'
-  },
-
-  {
-    path: 'feedback', component: FeedbackComponent
-
-  },
-
-  {
-    path: 'viewfeedback', component: ViewFeedbacksComponent
-
   },
 
   {
@@ -34,6 +27,27 @@ const routes: Routes = [
     },
 
     children: [
+
+      {
+        path: 'feedback', component: FeedbackComponent
+    
+      },
+
+      {
+        path: 'viewfeedback', component: ViewFeedbacksComponent
+    
+      },
+
+      {
+        path: 'rewardShop',
+        loadChildren: () =>
+          import('./views/rewards/shop/rewardShop.module').then((m) => m.RewardShopModule)
+      },
+      {
+        path: 'wallet',
+        loadChildren: () =>
+          import('./views/wallet/wallet.module').then((m) => m.WalletModule)
+      },
       {
         path: 'randomizer',
         loadChildren: () =>
@@ -117,6 +131,27 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  { //kerrichanged
+    path: 'accountCreation',
+    component: accountCreationComponent,
+    data: {
+      title: 'Account Creation Page'
+    }
+  },
+  { //kerrichanged
+    path: 'getPassword',
+    component: getPasswordComponent,
+    data: {
+      title: 'Get Password Page'
+    }
+  },
+  { //kerrichanged
+    path: 'registerOrganizer',
+    component: registerOrganizerComponent,
+    data: {
+      title: 'Register Organizer Page'
     }
   },
   {path: '**', redirectTo: 'dashboard'}

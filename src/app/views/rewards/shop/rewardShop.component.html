@@ -1,0 +1,108 @@
+<script type="text/javascript">alert("this works")
+    
+    
+</script> 
+
+<script>
+    document.getElementById("claimButton").addEventListener("click", retrieveRewardOnClick);
+    function retrieveRewardOnClick(){
+        if (confirm('Are you sure you want to claim this reward?')) {
+            // Save it!
+            console.log('Redirecting to user claim page.');
+        } else {
+        // Do nothing!
+            console.log('Reward will not be claimed.');
+        }
+    }
+</script>
+
+<style type="text/css">
+    * {margin: 0; padding: 0;}
+    #container {height: 100%; width:100%; font-size: 0;}
+    #left, #middle, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; padding:10px;font-size: 16px;}
+    #left {width: 30%; background: rgb(0, 149, 255);}
+    #middle {width: 30%; background: rgb(171, 228, 171);}
+    #right {width: 30%; background: rgb(209, 209, 164);}
+
+    #rewardName {top: 10%}
+    #rewardCost {top: 20%}
+    #rewardImage {top: 30%}
+    #claimButton {top: 40%}
+</style>
+
+<div>
+    <label  style="font-family:Franklin Gothic Medium;font-size:20px">Available balance:  {{balanceAmount}}</label>
+    
+</div>
+<br>
+<br>
+<div>
+    <div>
+        <div id="container">
+            <div id="left">
+                <div id="rewardName">
+                    <label>item1: </label>&nbsp;{{rewardItems[0].name}}
+                </div>
+                <div id="rewardCost">
+                    <label>Cost: 32</label>
+                </div>
+                <div id="rewardImage">
+                    <img [src]="rewardItems[0].image" width="150" height="200">
+                </div>  
+                &nbsp;
+                <button id="claimButton" type="button" class="claimButton" onclick="retrieveRewardOnClick()">Retrieve</button>
+            
+            &nbsp;
+            </div>
+            &nbsp;
+            <div id="middle">
+                <div id="rewardName">
+                    <label>item2: </label> &nbsp; {{rewardItems[0].name}}
+                </div>
+                <div id="rewardCost">
+                    <label>Cost: 32</label>
+                </div>
+                <div id="rewardImage">
+                    <img [src]="rewardItems[0].image" width="150" height="200">
+                </div>  
+                &nbsp;
+                <button type="button" class="claimButton">Retrieve</button>
+            </div>
+            &nbsp;
+            <div id="right">
+                <div id="rewardName">
+                    <label>item3: </label> &nbsp; {{rewardItems[0].name}}
+                </div>
+                <div id="rewardCost">
+                    <label>Cost: 32</label>
+                </div>
+                <div id="rewardImage">
+                    <img [src]="rewardItems[0].image" width="150" height="200">
+                </div>  
+                &nbsp;
+                <button type="button" class="claimButton">Retrieve</button>
+            </div>
+            
+        </div>
+        &nbsp;&nbsp;
+        <div id="container">
+            <div id="left">
+                <div id="rewardName">
+                    <label>item1: </label>{{rewardItems[0].name}}
+                </div>
+                <div id="rewardCost">
+                    <label>Cost: 32</label>
+                </div>
+                <div id="rewardImage">
+                    <img [src]="rewardItems[0].image" width="150" height="200">
+                </div>  
+                &nbsp;
+                <button type="button" class="claimButton">Retrieve</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<button cButton size="sm" class="position-absolute top-11 end-10 rounded-0" style="width: 63px;height: 30px;text-align:center;line-height:1em;background-color:	#C0C0C0;border-color:grey;font-size:13px;color:#2E2E2E">Refresh</button>

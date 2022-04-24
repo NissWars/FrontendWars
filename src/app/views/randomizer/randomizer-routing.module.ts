@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { RandomizerComponent } from './randomizer.component';
 
 const routes: Routes = [
-  {path: '',
-  component: RandomizerComponent
+  {
+    path: '',
+    component: RandomizerComponent
   }
 ];
 
