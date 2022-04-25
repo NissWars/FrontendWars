@@ -107,7 +107,6 @@ const APP_CONTAINERS = [
     CardModule,
     MaterialModule,
     HttpClientModule
-
   ],
   providers: [
     {

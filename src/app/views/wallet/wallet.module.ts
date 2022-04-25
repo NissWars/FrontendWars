@@ -14,6 +14,7 @@ import {
   TableModule,
   TabsModule,
   PaginationModule,
+  ModalModule
 } from '@coreui/angular';
 import { WalletComponent } from './wallet.component';
 
@@ -33,7 +34,8 @@ import { WalletComponent } from './wallet.component';
     TableModule,
     TabsModule,
     PaginationModule,
-    IconModule
+    IconModule,
+    ModalModule
   ]
 })
 export class WalletModule { }
