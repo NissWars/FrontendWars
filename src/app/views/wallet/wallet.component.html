@@ -10,7 +10,7 @@
             <thead cTableColor="light">
                 <tr>
                     <th style="width:1px" scope="col">SGD($)</th>
-                    <th style="width:600px;text-align: center;" scope="col">12345578.00</th>
+                    <th style="width:600px;text-align: center;" scope="col">{{balance}}</th>
                     <th style="width:1px" scope="col">
                         <button cButton color="primary" size="sm" class="rounded-pill">Top Up</button>
                     </th>
@@ -33,33 +33,30 @@
                                 [name]="iconType"></svg></button></th>
                     <th>Name <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
                                 [name]="iconType"></svg></button></th>
-                    <th>Registered <button style="border-style: none;background-color: white;"> <svg cIcon
+                    <th>Payment Method <button style="border-style: none;background-color: white;"> <svg cIcon
                                 [name]="iconType"></svg></button></th>
-                    <th>Role <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
+                    <th>Amount <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
                                 [name]="iconType"></svg></button></th>
-                    <th>Status <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg
+                    <th>Date/Time <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg
                                 cIcon [name]="iconType"></svg></button></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let user of usersData; index as i">
                     <td>
-                        <div>{{ user.id }}</div>
-                        <div class="small text-medium-emphasis">
-                            Registered:{{ user.registered }}
-                        </div>
+                        <div>{{ user.topUpHistoryID }}</div>
                     </td>
                     <td>
-                        <div>{{ user.name }}</div>
+                        <div>{{ user.custName }}</div>
                     </td>
                     <td>
-                        {{ user.registered }}
+                        {{ user.paymentMethodDesc }}
                     </td>
                     <td>
-                        <div>{{ user.role }}</div>
+                        <div>{{ user.topUpAmount }}</div>
                     </td>
                     <td>
-                        <div>{{ user.status }}</div>
+                        <div>{{ user.creationDateTime | date: 'yyyy-MM-dd HH:mm'}}</div>
                     </td>
                 </tr>
             </tbody>

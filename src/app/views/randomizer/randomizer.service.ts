@@ -2,21 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, Observable} from 'rxjs'
 
-interface ItemResponseObj{
-  eventId:String,
-  eventSerialNumber:String,
-  location:String,
-  startTime:Date,
-  pointCompletion: String,
-  price: String,
-  maximumPax: String,
-  organizerId:String,
-  orgName:String,
-  tagId:string,
-  tagName:String,
-  eventTagId:String
-}
-
 @Injectable({
   providedIn: 'root'
 })
