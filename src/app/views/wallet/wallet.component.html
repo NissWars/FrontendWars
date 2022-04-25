@@ -19,6 +19,7 @@
         </table>
     </c-card>
     <hr />
+    <button [cModalToggle]="staticBackdropModal.id" cButton>Launch static backdrop modal</button>
     <c-card class="mb-4 card">
         <c-card-header class="card-header" style="font-family: Roboto;font-weight: 900;font-size: larger"
             align="center">
@@ -28,11 +29,16 @@
             class="mb-0 border">
             <thead cTableColor="light">
                 <tr>
-                    <th>Id  <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon [name]="iconType"></svg></button></th>
-                    <th>Name <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon [name]="iconType"></svg></button></th>
-                    <th>Registered  <button style="border-style: none;background-color: white;"> <svg cIcon [name]="iconType"></svg></button></th>
-                    <th>Role  <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon [name]="iconType"></svg></button></th>
-                    <th>Status  <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon [name]="iconType"></svg></button></th>
+                    <th>Id <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
+                                [name]="iconType"></svg></button></th>
+                    <th>Name <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
+                                [name]="iconType"></svg></button></th>
+                    <th>Registered <button style="border-style: none;background-color: white;"> <svg cIcon
+                                [name]="iconType"></svg></button></th>
+                    <th>Role <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
+                                [name]="iconType"></svg></button></th>
+                    <th>Status <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg
+                                cIcon [name]="iconType"></svg></button></th>
                 </tr>
             </thead>
             <tbody>
@@ -73,3 +79,19 @@
         </c-pagination>
     </c-card>
 </div>
+
+
+
+<c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal">
+    <c-modal-header>
+        <h5 cModalTitle>Modal title</h5>
+        <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>Woohoo, you&#39;re reading this text in a modal!</c-modal-body>
+    <c-modal-footer>
+        <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
+            Close
+        </button>
+        <button cButton color="primary">Understood</button>
+    </c-modal-footer>
+</c-modal>
