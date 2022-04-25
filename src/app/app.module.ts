@@ -60,6 +60,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { FeedbackComponent } from './views/feedback/feedback.component';
 import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
 import { StarRatingComponent } from './views/star-rating/star-rating.component';
+import { EventComponent } from './views/event/event.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -72,7 +73,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, FeedbackComponent, ViewFeedbacksComponent , StarRatingComponent,],
+  declarations: [AppComponent, ...APP_CONTAINERS, FeedbackComponent, ViewFeedbacksComponent , StarRatingComponent, EventComponent,],
   imports: [
    // matCardModule, //kerrichangedvalidate
    // matButtonModule, //kerrichangedvalidate
