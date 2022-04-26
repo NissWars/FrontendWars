@@ -4,12 +4,12 @@ import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+/*
 import {MatInputModule} from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon'
-
+*/
 import { profileComponent } from './profile/profile.component';
 import { profileOrganizerComponent } from './profileOrganizer/profileOrganizer.component';
 import { accountCreationComponent } from './accountCreation/accountCreation.component';
@@ -92,8 +92,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+/*
+
+@NgModule({
   imports: [RouterModule.forChild(routes),MatDatepickerModule,MatNativeDateModule,MatIconModule],
   exports: [RouterModule,MatInputModule,MatDatepickerModule,MatNativeDateModule,MatIconModule]
-})
+})*/
+
 export class PagesRoutingModule {
 }
