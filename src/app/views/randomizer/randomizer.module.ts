@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {
   AvatarModule,
@@ -8,6 +9,7 @@ import {
   CardModule,
   FormModule,
   GridModule,
+  ModalComponent,
   NavModule,
   ProgressModule,
   TableModule,
@@ -19,7 +21,7 @@ import { RandomizerComponent } from './randomizer.component';
 
 @NgModule({
   declarations: [
-    RandomizerComponent,
+    RandomizerComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { RandomizerComponent } from './randomizer.component';
     ProgressModule,
     TableModule,
     TabsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class RandomizerModule { }

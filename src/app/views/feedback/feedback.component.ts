@@ -45,7 +45,7 @@ export class FeedbackComponent implements OnInit {
 
       this.fd.append('rating',data.value.ratings);
       this.fd.append('comment',data.value.comments);
-      this.fd.append('image',data.value.file);
+      this.fd.append('image',this.form.get('file').value);
 
       console.log(this.fd.get('image'));
       console.log(this.fd.get('rating'));
@@ -65,7 +65,13 @@ export class FeedbackComponent implements OnInit {
       
       if(event.target.files && event.target.files.length) {
         const [file] = event.target.files;
-        reader.readAsDataURL(file);
+        
+        this.form.patchValue({
+          file: file
+        });
+
+
+        reader.readAsDataURL(this.form.get('file').value);
       
         reader.onload = () => {
      

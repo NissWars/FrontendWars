@@ -5,27 +5,27 @@
         <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
         <c-card-img-overlay *ngIf="randomTriggered">
             <c-card-body >
-                <h5 cCardTitle style="color: black;">Event Name</h5>
-                <p cCardText *ngIf="participants1==0;">
+                <h5 cCardTitle style="color: black;">{{cardValues.name1}}</h5>
+                <p cCardText *ngIf="cardValues.participants1==0;">
                     Unrated
                 </p>
-                <p cCardText *ngIf="participants1>0;">
+                <p cCardText *ngIf="cardValues.participants1>0;">
                     Number of stars:
                 </p>
-                <p cCardText *ngIf="participants1>0;">
-                    Total past partipants: {{participants1}} <br>
+                <p cCardText *ngIf="cardValues.participants1>0;">
+                    Total past partipants: {{cardValues.participants1}} <br>
                 </p>
-                <p cCardText *ngIf="participants1==0;" style="font-family: Impact">
+                <p cCardText *ngIf="cardValues.participants1==0;" style="font-family: Impact">
                     New Event!!!! <br>
                 </p>
-                <p cCardText *ngIf="cost1>0;">
-                    Cost of Event($): {{cost1}}<br>
+                <p cCardText *ngIf="cardValues.cost1>0;">
+                    Cost of Event($): {{cardValues.cost1}}<br>
                 </p>
-                <p cCardText *ngIf="cost1==0;">
+                <p cCardText *ngIf="cardValues.cost1==0;">
                     Cost of Event($): Free<br>
                 </p>
                 <p cCardText>
-                    Number of points: {{participants1}} <br>
+                    Number of points: {{cardValues.participants1}} <br>
                 </p>
             </c-card-body>
         </c-card-img-overlay>
@@ -36,27 +36,27 @@
         <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
         <c-card-img-overlay *ngIf="randomTriggered">
             <c-card-body >
-                <h5 cCardTitle style="color: black;">Event Name</h5>
-                <p cCardText *ngIf="participants2==0;">
+                <h5 cCardTitle style="color: black;">{{cardValues.name2}}</h5>
+                <p cCardText *ngIf="cardValues.participants2==0;">
                     Unrated
                 </p>
-                <p cCardText *ngIf="participants2>0;">
+                <p cCardText *ngIf="cardValues.participants2>0;">
                     Number of stars:
                 </p>
-                <p cCardText *ngIf="participants2>0;">
-                    Total past partipants: {{participants2}} <br>
+                <p cCardText *ngIf="cardValues.participants2>0;">
+                    Total past partipants: {{cardValues.participants2}} <br>
                 </p>
-                <p cCardText *ngIf="participants2==0;" style="font-family: Impact">
+                <p cCardText *ngIf="cardValues.participants2==0;" style="font-family: Impact">
                     New Event!!!! <br>
                 </p>
-                <p cCardText *ngIf="cost2>0;">
-                    Cost of Event($): {{cost2}}<br>
+                <p cCardText *ngIf="cardValues.cost2>0;">
+                    Cost of Event($): {{cardValues.cost2}}<br>
                 </p>
-                <p cCardText *ngIf="cost2==0;">
+                <p cCardText *ngIf="cardValues.cost2==0;">
                     Cost of Event($): Free<br>
                 </p>
                 <p cCardText>
-                    Number of points: {{participants2}} <br>
+                    Number of points: {{cardValues.participants2}} <br>
                 </p>
             </c-card-body>
         </c-card-img-overlay>
@@ -67,27 +67,27 @@
         <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
         <c-card-img-overlay *ngIf="randomTriggered">
             <c-card-body >
-                <h5 cCardTitle style="color: black;">Event Name</h5>
-                <p cCardText *ngIf="participants3==0;">
+                <h5 cCardTitle style="color: black;">{{cardValues.name3}}</h5>
+                <p cCardText *ngIf="cardValues.participants3==0;">
                     Unrated
                 </p>
-                <p cCardText *ngIf="participants3>0;">
+                <p cCardText *ngIf="cardValues.participants3>0;">
                     Number of stars:
                 </p>
-                <p cCardText *ngIf="participants3>0;">
-                    Total past partipants: {{participants3}} <br>
+                <p cCardText *ngIf="cardValues.participants3>0;">
+                    Total past partipants: {{cardValues.participants3}} <br>
                 </p>
-                <p cCardText *ngIf="participants3==0;" style="font-family: Impact">
+                <p cCardText *ngIf="cardValues.participants3==0;" style="font-family: Impact">
                     New Event!!!! <br>
                 </p>
-                <p cCardText *ngIf="cost3>0;">
-                    Cost of Event($): {{cost3}}<br>
+                <p cCardText *ngIf="cardValues.cost3>0;">
+                    Cost of Event($): {{cardValues.cost3}}<br>
                 </p>
-                <p cCardText *ngIf="cost3==0;">
+                <p cCardText *ngIf="cardValues.cost3==0;">
                     Cost of Event($): Free<br>
                 </p>
                 <p cCardText>
-                    Number of points: {{participants3}} <br>
+                    Number of points: {{cardValues.participants3}} <br>
                 </p>
             </c-card-body>
         </c-card-img-overlay>
