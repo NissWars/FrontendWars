@@ -9,6 +9,8 @@ import { Title } from '@angular/platform-browser';
   // tslint:disable-next-line:component-selector
   selector: 'body',
   template: '<router-outlet></router-outlet>',
+//  templateUrl: './app.component.html', //kerrichangedvalidate
+//  styleUrls: ['./app.component.scss'] //kerrichangedvalidate
 })
 export class AppComponent implements OnInit {
   title = 'CoreUI Free Angular Admin Template';

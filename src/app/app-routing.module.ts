@@ -6,20 +6,38 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { FeedbackComponent } from './views/feedback/feedback.component';
+import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
+import { accountCreationComponent } from './views/pages/accountCreation/accountCreation.component'; //kerrichanged
+import { getPasswordComponent } from './views/pages/getPassword/getPassword.component'; //kerrichanged
+import { registerOrganizerComponent } from './views/pages/registerOrganizer/registerOrganizer.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'rewardShop',
+    redirectTo: 'login', //kerrichanged 
     pathMatch: 'full'
   },
+
   {
     path: '',
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
     },
+
     children: [
+
+      {
+        path: 'feedback', component: FeedbackComponent
+    
+      },
+
+      {
+        path: 'viewfeedback', component: ViewFeedbacksComponent
+    
+      },
+
       {
         path: 'rewardShop',
         loadChildren: () =>
@@ -113,6 +131,27 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  { //kerrichanged
+    path: 'accountCreation',
+    component: accountCreationComponent,
+    data: {
+      title: 'Account Creation Page'
+    }
+  },
+  { //kerrichanged
+    path: 'getPassword',
+    component: getPasswordComponent,
+    data: {
+      title: 'Get Password Page'
+    }
+  },
+  { //kerrichanged
+    path: 'registerOrganizer',
+    component: registerOrganizerComponent,
+    data: {
+      title: 'Register Organizer Page'
     }
   },
   {path: '**', redirectTo: 'dashboard'}
