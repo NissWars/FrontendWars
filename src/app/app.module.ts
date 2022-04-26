@@ -4,11 +4,17 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
 //import {matCardModule} from '@angular/material/card'; //kerrichangedvalidate
 //import {matButtonModule} from '@angular/material/button'; //kerrichangedvalidate
 //import {matInputModule} from '@angular/material/input'; //kerrichangedvalidate
 //import {matIconModule} from '@angular/material/icon'; //kerrichangedvalidate
 //import { RegisterComponent } from './views/pages/register/register.component'; //kerrichangedvalidate
+import { feedBackService } from './views/feedback/feedback.service';
+import { viewFeedBacksService } from './views/view-feedbacks/view-feedbacks.service';
+import { HttpErrorHandler } from './http-error-handler.service';
+import { MessageService } from './message.service';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -51,6 +57,11 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { FeedbackComponent } from './views/feedback/feedback.component';
+import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
+import { StarRatingComponent } from './views/star-rating/star-rating.component';
+import { EventDetailComponent } from './views/event/event-detail/event-detail.component';
+import { EventListComponent } from './views/event/event-list/event-list.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -63,7 +74,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, FeedbackComponent, ViewFeedbacksComponent , StarRatingComponent, EventDetailComponent, EventListComponent, ],
   imports: [
    // matCardModule, //kerrichangedvalidate
    // matButtonModule, //kerrichangedvalidate
@@ -96,6 +107,8 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -107,7 +120,12 @@ const APP_CONTAINERS = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     IconSetService,
-    Title
+    Title,
+    feedBackService,
+    MessageService,
+    viewFeedBacksService,
+    HttpErrorHandler,
+    
   ],
   bootstrap: [AppComponent],
 })

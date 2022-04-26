@@ -1,7 +1,19 @@
 import { R3FactoryDelegateType } from '@angular/compiler/src/render3/r3_factory';
 import { AfterViewInit, Component, OnInit,ChangeDetectionStrategy } from '@angular/core';
 import { AnyForUntypedForms } from '@angular/forms';
+import { RandomizerService} from './randomizer.service'
 
+interface cardValues{
+  cost1?: any;
+  participants1?: any;
+  name1?: any;
+  cost2?: any;
+  participants2?: any;
+  name2?: any;
+  cost3?: any;
+  participants3?: any;
+  name3?: any;
+}
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-randomizer',
@@ -13,24 +25,22 @@ export class RandomizerComponent implements OnInit {
   now: Date = new Date();
   minFromDate!: string;
   minToDate: any;
-  participants1: any;
-  cost1: any;
-  participants2: any;
-  cost2: any;
-  participants3: any;
-  cost3: any;
+  cardValues: cardValues = {};
   cardStyle: string ="width: 250px;height: 330px;";
   ranButStyle: string = "width: 200px;height: 40px;text-align:center;line-height:1em;background-color: lightseagreen;outline: none !important;border: none;"
   randomTriggered: boolean = false;
-  constructor() { 
+  navigator: number=0;
+  eventList: any;
+
+  constructor(private randomizerService: RandomizerService) { 
   }
   ngOnInit(): void {
 
     this.minFromDate = this.dateFunc(this.now);
     //this.now.setDate(this.now.getDate()+1);
     this.minToDate = this.dateFunc(this.now);
-    this.participants3 = 2;
-    this.cost3 = 0;
+    this.randomizerService.sendGetAllTags("1").subscribe(
+      (data: any)=>{console.log(data);this.eventList=data;})
   }
   dateFunc(today:Date): string{
     var dd:string = today.getDate().toString();
@@ -48,21 +58,58 @@ export class RandomizerComponent implements OnInit {
     this.minToDate=this.minFromDate;
   }
   onRandomize(){
+    this.randomizeFunctionality();
+  }
+  randomizeFunctionality(){
+    console.log(this.eventList);
+    if(this.navigator<this.eventList.length){
+      this.cardValues.cost1=this.eventList[this.navigator].price;
+      this.cardValues.participants1=this.eventList[this.navigator].maximumPax;
+      this.cardValues.name1=this.eventList[this.navigator].eventName;
+      this.navigator++;
+    }
+    if(this.navigator<this.eventList.length){
+      this.cardValues.cost2=this.eventList[this.navigator].price;
+      this.cardValues.participants2=this.eventList[this.navigator].maximumPax;
+      this.cardValues.name2=this.eventList[this.navigator].eventName;
+      this.navigator++;
+    }
+    if(this.navigator<this.eventList.length){
+      this.cardValues.cost3=this.eventList[this.navigator].price;
+      this.cardValues.participants3=this.eventList[this.navigator].maximumPax;
+      this.cardValues.name3=this.eventList[this.navigator].eventName;
+      this.navigator++;
+    }
     this.randomTriggered=true;
     this.cardStyle = this.cardStyle + "opacity: 0.2;";
     this.ranButStyle = this.ranButStyle + "visibility: hidden;display: none";
-    this.cost1 = 1;
-    this.participants1 =1;
-    this.cost2 = 2;
-    this.participants2 =0;
-    console.log(this.cardStyle);
+    console.log(this.eventList[this.navigator].price);
+    console.log(this.navigator);
+    console.log(this.eventList.length);
+    console.log(this.cardValues.cost3);
   }
   onRefresh(){
-    this.cost1 = 0;
-    this.participants1 =0;
-    this.cost2 = 0;
-    this.participants2 =0;
-    this.cost3 = 0;
-    this.participants3 =0;
+    if(this.navigator>=this.eventList.length)
+    {
+      alert("Refresh Limit Reached");
+    }
+    if(this.navigator<this.eventList.length){
+      this.cardValues.cost1=this.eventList[this.navigator].price;
+      this.cardValues.participants1=this.eventList[this.navigator].maximumPax;
+      this.cardValues.name1=this.eventList[this.navigator].eventName;
+      this.navigator++;
+    }
+    if(this.navigator<this.eventList.length){
+      this.cardValues.cost2=this.eventList[this.navigator].price;
+      this.cardValues.participants2=this.eventList[this.navigator].maximumPax;
+      this.cardValues.name2=this.eventList[this.navigator].eventName;
+      this.navigator++;
+    }
+    if(this.navigator<this.eventList.length){
+      this.cardValues.cost3=this.eventList[this.navigator].price;
+      this.cardValues.participants3=this.eventList[this.navigator].maximumPax;
+      this.cardValues.name3=this.eventList[this.navigator].eventName;
+      this.navigator++;
+    }
   }
 }

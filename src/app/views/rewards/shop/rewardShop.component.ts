@@ -2,6 +2,19 @@ import { R3FactoryDelegateType } from '@angular/compiler/src/render3/r3_factory'
 import { AfterViewInit, Component, OnInit,ChangeDetectionStrategy } from '@angular/core';
 import { AnyForUntypedForms } from '@angular/forms';
 
+interface rewardItem {
+  REWARD_ITEM_ID: string;
+  AMOUNT_LEFT: any;
+  REWARD_POINT_NEEDED: any;
+  ITEM_NAME: string;
+  DESCRIPTION: string;
+  REDEMPTION_DEADLINE: any;
+  CREATION_DATETIME: Date;
+  CREATION_USER: string;
+  LAST_UPDATE_DATETIME: Date;
+  LAST_UPDATE_USER: string;
+};
+
 interface rewardItemInterface {
   name: string;
   cost: any;
@@ -41,11 +54,20 @@ export class RewardShopComponent implements OnInit {
 
     this.minFromDate = this.dateFunc(this.now);
     //this.now.setDate(this.now.getDate()+1);
-    this.minToDate = this.dateFunc(this.now);
+    //this.minToDate = this.dateFunc(this.now);
     this.participants3 = 2;
     this.cost3 = 0;
     this.balanceAmount = 54.2;
     
+  }
+  onRetrieveButtonClick(optionChosen: number): void {
+    //this.cost3 = 87;
+    let UserConfirmationVar = confirm("Are you sure you want to claim the prize?");
+    if(UserConfirmationVar == true){
+      this.cost3 = optionChosen;
+    } else{
+      this.cost3 = 16;
+    }
   }
   dateFunc(today:Date): string{
     var dd:string = today.getDate().toString();

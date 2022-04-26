@@ -4,16 +4,7 @@
 </script> 
 
 <script>
-    document.getElementById("claimButton").addEventListener("click", retrieveRewardOnClick);
-    function retrieveRewardOnClick(){
-        if (confirm('Are you sure you want to claim this reward?')) {
-            // Save it!
-            console.log('Redirecting to user claim page.');
-        } else {
-        // Do nothing!
-            console.log('Reward will not be claimed.');
-        }
-    }
+    console.log("rewardShopLogged");
 </script>
 
 <style type="text/css">
@@ -50,7 +41,7 @@
                     <img [src]="rewardItems[0].image" width="150" height="200">
                 </div>  
                 &nbsp;
-                <button id="claimButton" type="button" class="claimButton" onclick="retrieveRewardOnClick()">Retrieve</button>
+                <button id="claimButton" type="button" class="claimButton" (click)="onRetrieveButtonClick(1)">Retrieve</button>
             
             &nbsp;
             </div>
@@ -91,13 +82,13 @@
                     <label>item1: </label>{{rewardItems[0].name}}
                 </div>
                 <div id="rewardCost">
-                    <label>Cost: 32</label>
+                    <label>Cost:</label> {{cost3}}
                 </div>
                 <div id="rewardImage">
                     <img [src]="rewardItems[0].image" width="150" height="200">
                 </div>  
                 &nbsp;
-                <button type="button" class="claimButton">Retrieve</button>
+                <button type="button" class="claimButton" (click)="onRetrieveButtonClick(2)">Retrieve</button>
             </div>
             
         </div>
