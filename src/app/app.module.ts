@@ -11,6 +11,7 @@ import { MaterialModule } from './material/material.module';
 //import {matIconModule} from '@angular/material/icon'; //kerrichangedvalidate
 //import { RegisterComponent } from './views/pages/register/register.component'; //kerrichangedvalidate
 import { feedBackService } from './views/feedback/feedback.service';
+import { EventService } from './views/event/event.service';
 import { viewFeedBacksService } from './views/view-feedbacks/view-feedbacks.service';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
@@ -140,7 +141,7 @@ const APP_CONTAINERS = [
     MessageService,
     viewFeedBacksService,
     HttpErrorHandler,
-    
+    EventService,
   ],
   bootstrap: [AppComponent],
 })
