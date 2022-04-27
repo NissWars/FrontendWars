@@ -9,8 +9,11 @@ import { RegisterComponent } from './views/pages/register/register.component';
 import { FeedbackComponent } from './views/feedback/feedback.component';
 import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
 import { accountCreationComponent } from './views/pages/accountCreation/accountCreation.component'; //kerrichanged
-import { getPasswordComponent } from './views/pages/getPassword/getPassword.component'; //kerrichanged
 import { registerOrganizerComponent } from './views/pages/registerOrganizer/registerOrganizer.component';
+import { profileComponent } from './views/pages/profile/profile.component'; //kerrichanged
+import { profileOrganizerComponent } from './views/pages/profileOrganizer/profileOrganizer.component'; //kerrichanged
+import { resetPasswordComponent } from './views/pages/resetPassword/resetPassword.component';
+//import { SignUpComponent } from "./views/pages/sign-up/sign-up.component"; //kerrichanged
 
 const routes: Routes = [
   {
@@ -141,19 +144,41 @@ const routes: Routes = [
     }
   },
   { //kerrichanged
-    path: 'getPassword',
-    component: getPasswordComponent,
-    data: {
-      title: 'Get Password Page'
-    }
-  },
-  { //kerrichanged
     path: 'registerOrganizer',
     component: registerOrganizerComponent,
     data: {
       title: 'Register Organizer Page'
     }
   },
+  { //kerrichanged
+    path: 'profile',
+    component: profileComponent,
+    data: {
+      title: 'Profile Page'
+    }
+  },
+  { //kerrichanged
+    path: 'profileOrganizer',
+    component: profileOrganizerComponent,
+    data: {
+      title: 'Profile Organizer Page'
+    }
+  },
+  { //kerrichanged
+    path: 'resetPassword',
+    component: resetPasswordComponent,
+    data: {
+      title: 'Reset Password Page'
+    }
+  },
+  /*
+  { //kerrichanged
+    path: 'SignUp',
+    component: SignUpComponent,
+    data: {
+      title: 'Sign Up Page'
+    }
+  }*/
   {path: '**', redirectTo: 'dashboard'}
 ];
 

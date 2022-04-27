@@ -1,21 +1,36 @@
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
 <ng-container>
   <c-container [fluid]="true">
-    <c-header-nav class="d-none d-lg-flex me-auto">
-      <c-nav-item>
-        <a cNavLink routerLink="/dashboard" routerLinkActive="active">
-          Dashboard
-        </a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/settings" routerLinkActive="active">
-          Settings
-        </a>
-      </c-nav-item>
-    </c-header-nav>
+    <c-card-body>
+      <c-nav variant="tabs">
+        <c-nav-item>
+          <a [active]="true" [cTabContent]="tabContent1" routerLink="./dashboard" [tabPaneIdx]="0" cNavLink>
+            <svg cIcon class="me-2" name="cilHome"></svg>
+            Home
+          </a>
+        </c-nav-item>
+        <c-nav-item>
+          <a [cTabContent]="tabContent1" routerLink="./profile" [tabPaneIdx]="1" cNavLink>
+            <svg cIcon class="me-2" name="cilUser"></svg>
+            Profile
+          </a>
+        </c-nav-item>
+        <c-nav-item>
+          <a [cTabContent]="tabContent1" routerLink="./" [tabPaneIdx]="2" cNavLink>
+            <svg cIcon class="me-2" name="cilCode"></svg>
+            Event History
+          </a>
+        </c-nav-item>
+      </c-nav>
+      <c-tab-content #tabContent1="cTabContent" [activeTabPaneIdx]="1" cRounded="bottom">
+        <c-tab-pane class="p-3 preview" role="tabpanel">
+         </c-tab-pane>
+        <c-tab-pane class="p-3 preview" role="tabpanel">
+          </c-tab-pane>
+        <c-tab-pane class="p-3 preview" role="tabpanel">
+          </c-tab-pane>
+       </c-tab-content>
+    </c-card-body>
 
     <c-header-nav class="d-none d-lg-flex">
       <c-nav-item>

@@ -64,6 +64,8 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { FeedbackComponent } from './views/feedback/feedback.component';
 import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
 import { StarRatingComponent } from './views/star-rating/star-rating.component';
+import { EventDetailComponent } from './views/event/event-detail/event-detail.component';
+import { EventListComponent } from './views/event/event-list/event-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -83,7 +85,8 @@ const APP_CONTAINERS = [
     StarRatingComponent,
     SuccessModalComponent,
     ConfirmationModalComponent,
-
+    EventDetailComponent, 
+    EventListComponent,
 
   ],
   imports: [
@@ -120,7 +123,7 @@ const APP_CONTAINERS = [
     CardModule,
     MaterialModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
     {
