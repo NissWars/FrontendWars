@@ -16,6 +16,10 @@ import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { HttpClientModule } from '@angular/common/http';
 
+// Common Component
+import { SuccessModalComponent } from "./views/modal/success-modal.component";
+import { ConfirmationModalComponent } from "./views/modal/confirmation-modal.component";
+
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -60,6 +64,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { FeedbackComponent } from './views/feedback/feedback.component';
 import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
 import { StarRatingComponent } from './views/star-rating/star-rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -72,7 +77,15 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, FeedbackComponent, ViewFeedbacksComponent , StarRatingComponent,],
+  declarations: [AppComponent, ...APP_CONTAINERS, 
+    FeedbackComponent,
+    ViewFeedbacksComponent ,
+    StarRatingComponent,
+    SuccessModalComponent,
+    ConfirmationModalComponent,
+
+
+  ],
   imports: [
    // matCardModule, //kerrichangedvalidate
    // matButtonModule, //kerrichangedvalidate
@@ -106,7 +119,8 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     {

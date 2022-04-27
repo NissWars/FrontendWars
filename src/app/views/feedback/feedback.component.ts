@@ -3,6 +3,10 @@ import { FormGroup, FormControl , Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { feedBackService } from './feedback.service';
 import { StarRatingColor } from '../star-rating/star-rating.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from '../modal/confirmation-modal.component';
+import { SuccessModalComponent } from '../modal/success-modal.component';
+
 
 @Component({
   selector: 'app-feedback',
@@ -21,7 +25,7 @@ export class FeedbackComponent implements OnInit {
   fd = new FormData();
   
     constructor(private service :feedBackService,
-      private router: Router) { }
+      private router: Router, protected modalService: NgbModal) { }
   
     ngOnInit(): void {
       //this.loggedUser = sessionStorage.getItem('loggedUser');
@@ -40,7 +44,7 @@ export class FeedbackComponent implements OnInit {
       data.value.ratings = this.rating;
 
       this.fd.append('eventSerialNumber','1');
-      this.fd.append('customer','12');
+      this.fd.append('customerID','20220420000000000000');
 
 
       this.fd.append('rating',data.value.ratings);
@@ -50,11 +54,20 @@ export class FeedbackComponent implements OnInit {
       console.log(this.fd.get('image'));
       console.log(this.fd.get('rating'));
 
+      const confirmationModal = this.modalService.open(ConfirmationModalComponent);
 
-      this.service.saveFeedBack(this.fd).subscribe(resp => {
-        console.log('success');
-      });;
-      //this.router.navigate(['/feedbackList']);
+      confirmationModal.componentInstance.header = 'Confirm Submission of FeedBack';
+      confirmationModal.componentInstance.content = 'Proceed to send feedback? Reward points will be allocated to your account'
+  
+      confirmationModal.result.then((action) => {
+        if(action === 'yes') {
+          this.service.saveFeedBack(this.fd).subscribe(resp => {
+            this.handleSuccessMessage('Record has been updated successfully');
+          });
+        }
+      }, () => {});
+
+
     }
     onCancel() {
       this.form.reset();
@@ -85,6 +98,16 @@ export class FeedbackComponent implements OnInit {
      
       }
     }
+
+    handleSuccessMessage(message: any) {
+      const successModal = this.modalService.open(SuccessModalComponent);
+      successModal.componentInstance.alertType = 'alert-success';
+      successModal.componentInstance.content = message;
+      successModal.result.then((success) => {
+        window.location.reload();
+      }, (error) =>{ window.location.reload();})
+    }
+  
 
 
 }

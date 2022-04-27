@@ -2,6 +2,7 @@ import { R3FactoryDelegateType } from '@angular/compiler/src/render3/r3_factory'
 import { AfterViewInit, Component, OnInit,ChangeDetectionStrategy } from '@angular/core';
 import { AnyForUntypedForms } from '@angular/forms';
 
+
 interface rewardItemInterface {
   name: string;
   cost: any;
@@ -11,7 +12,7 @@ interface rewardItemInterface {
 // Test images. Pls remove these imgArray and delete images folder when db-connected
 var imgArray = new Array();
 imgArray[0] = new Image();
-imgArray[0].src = 'images/sampleImg1.jpg';
+imgArray[0].src = './images/sampleImg1.jpg';
 imgArray[1] = new Image();
 imgArray[1].src = 'images/sampleImg2.jpg';
 
