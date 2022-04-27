@@ -20,13 +20,13 @@
 
             <c-col [md]="4">
             <label cLabel for="validationCustom01">First name</label>
-            <input cFormControl id="validationCustom01" required type="text" />
+            <input cFormControl id="validationCustom01" [(ngModel)]="firstname" name="firstname" required type="text" />
             <c-form-feedback [valid]="false">Please enter a First Name</c-form-feedback>
             </c-col>
             
             <c-col [md]="4">
             <label cLabel for="validationCustom02">Last name</label>
-            <input cFormControl id="validationCustom02" required type="text" />
+            <input cFormControl id="validationCustom02" [(ngModel)]="lastname" name="lastname" required type="text" />
             <c-form-feedback [valid]="false">Please enter a Last Name</c-form-feedback>
             </c-col>
     
@@ -34,7 +34,7 @@
             <label cLabel for="validationCustomUsername">Username</label>
             <c-input-group class="has-validation">
             <span cInputGroupText id="inputGroupPrepend">@</span>
-            <input aria-describedby="inputGroupPrepend" cFormControl id="validationCustomUsername" required type="text"/>
+            <input aria-describedby="inputGroupPrepend" cFormControl id="validationCustomUsername" [(ngModel)]="username" name="username" required type="text"/>
             <c-form-feedback [valid]="false">Please enter a Username</c-form-feedback>
             </c-input-group>
             </c-col>
@@ -42,14 +42,14 @@
             <div>
               <c-col [md]="4">
               <label cLabel for="validationMobile">Mobile</label>
-              <input cFormControl id="validationMobile" required type="phone" required ng-pattern="^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$" maxlength="8"/>
+              <input cFormControl id="validationMobile" required type="phone" [(ngModel)]="mobile" name="mobile" required ng-pattern="^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$" minlength="8" maxlength="8"/>
               <c-form-feedback [valid]="false">Please enter a valid Mobile Number</c-form-feedback>
               </c-col>
             </div>
 
             <c-col [md]="6">
             <label cLabel for="validationCustom03">DOB</label>
-            <input cFormControl id="validationCustom03" required type="date" />
+            <input cFormControl id="validationCustom03" [(ngModel)]="dob" name="dob" required type="date" />
             <c-form-feedback [valid]="false">Please enter a valid Date of Birth</c-form-feedback>
             </c-col>
 
@@ -71,7 +71,7 @@
             <div>
             <c-col [md]="3">
             <label cLabel for="validationCustom04">Email</label>
-            <input cFormControl id="validationCustom04" required type="email" required ng-pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+            <input cFormControl id="validationCustom04" required type="email" [(ngModel)]="email" name="email" required ng-pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
             <c-form-feedback [valid]="false">Please enter a valid Email</c-form-feedback>
             </c-col>
             </div>  
@@ -79,7 +79,7 @@
             <div>
             <c-col [md]="3">
             <label cLabel for="validationCustom05">Password</label>
-            <input cFormControl id="validationCustom05" required type="text" />
+            <input cFormControl id="validationCustom05" [(ngModel)]="pw" name="pw" required type="text" />
             <c-form-feedback [valid]="false">Please enter a valid password</c-form-feedback>
             </c-col>
             </div>  
@@ -88,17 +88,79 @@
             <div>
               <c-col [md]="3">
               <label cLabel for="validationCustom05">Re-enter Password</label>
-              <input cFormControl id="validationCustom05" required type="text" />
+              <input cFormControl id="validationCustom05" [(ngModel)]="pw2" name="pw2" required type="text" />
               <c-form-feedback [valid]="false">Please enter a valid password</c-form-feedback>
               </c-col>
-              </div>  
+           </div>  
+              <hr class="my-4" />
+              <h6 class="heading-small text-muted mb-4">Preference Selection (Please select at least 3: )</h6>
+              <div>
+                <c-col [md]="3">
+                  <!--
+                  <c-form-check>
+                  <input cFormCheckInput id="validationSymposiums" required type="checkbox" />
+                  <label cFormCheckLabel for="validationSymposiums">Symposiums</label>
+                  </c-form-check>  -->
+                  <div>
+                  <c-form-check>
+                    <input #saveCheckBox1 id="saveCheckBox1" name="saveCheckBox1" type="checkbox" [checked]="savebox1" (change)="onSaveCheckboxChanged(saveCheckBox1.checked)"/>
+                    <label>Symposiums</label>
+                  </c-form-check>
+                  </div>
 
+                  <div>
+                  <c-form-check>
+                    <input  #saveCheckBox2 id="saveCheckBox2" name="saveCheckBox2" type="checkbox" [checked]="savebox2" (change)="onSaveCheckboxChanged(saveCheckBox2.checked)"/>
+                    <label >Exhibitions</label>
+                  </c-form-check>
+                  </div>
+
+                  <div>
+                  <c-form-check>
+                    <input #saveCheckBox3 id="saveCheckBox3" name="saveCheckBox3" type="checkbox" [checked]="savebox3" (change)="onSaveCheckboxChanged(saveCheckBox3.checked)"/>
+                    <label>Concerts</label>
+                  </c-form-check>
+                </div>
+
+                <div>
+                  <c-form-check>
+                    <input  #saveCheckBox4 id="saveCheckBox4" name="saveCheckBox4" type="checkbox" [checked]="savebox4" (change)="onSaveCheckboxChanged(saveCheckBox4.checked)"/>
+                    <label >Workshops</label>
+                  </c-form-check>
+                  </div>
+
+                  <div>
+                  <c-form-check>
+                    <input #saveCheckBox5 id="saveCheckBox5" name="saveCheckBox5" type="checkbox" [checked]="savebox5" (change)="onSaveCheckboxChanged(saveCheckBox5.checked)"/>
+                    <label>Dining</label>
+                  </c-form-check>
+                  </div>
+
+                  <div>
+                  <c-form-check>
+                    <input  #saveCheckBox6 id="saveCheckBox6" name="saveCheckBox6" type="checkbox" [checked]="savebox6" (change)="onSaveCheckboxChanged(saveCheckBox6.checked)"/>
+                    <label >Sports Activities</label>
+                  </c-form-check>
+                </div>
+
+                </c-col>
+              </div> 
+            
+
+            <hr class="my-4" />
             <c-col [xs]="12">
-            <c-form-check>
-            <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
-            <label cFormCheckLabel for="invalidCheck">Agree to terms and conditions</label>
-            </c-form-check>
-            <c-form-feedback [valid]="false">You must agree before submitting</c-form-feedback>
+              <!--
+              <c-form-check>
+                <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+                <label cFormCheckLabel for="invalidCheck">Agree to terms and conditions</label>
+                <c-form-feedback [valid]="false">You must agree before submitting</c-form-feedback>
+              </c-form-check>-->
+              <c-form-check>                        
+                <input  #saveCheckBoxAgree id="saveCheckBoxAgree" name="saveCheckBoxAgree" type="checkbox" [checked]="saveboxAgree" (change)="onSaveCheckbox(saveCheckBoxAgree.checked)"/>
+                <label >Agree to terms and conditions</label>
+              </c-form-check>
+
+
             </c-col>
             <c-col [xs]="12">
             <button cButton class="me-1" color="primary" type="submit">
@@ -119,152 +181,3 @@
   </c-container>
 </div>
 
-
-
-<!--
-<div class="row">
-  <div class="col-sm-6 offset-3">
-      <div class="text-center">
-          <h4>
-              Sign Up
-          </h4>
-
-      </div>
-      <form [formGroup]="userForm"
-            (ngSubmit)="onSubmit()">
-          <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text"
-                     formControlName="username"
-                     class="form-control"
-                     [ngClass]="{'is-invalid':username.errors && username.touched}"
-                     id="username"
-                     placeholder="Username">
-              <div class="invalid-feedback"
-                   *ngIf="username.hasError('usernameTaken')">
-                  Username is taken
-              </div>
-              <div class="invalid-feedback"
-                   *ngIf="username.hasError('required')">
-                  Username is required
-              </div>
-              <div class="invalid-feedback"
-                   *ngIf="username.hasError('minlength')">
-                  Username must be at least 3 characters
-              </div>
-
-          </div>
-          <div class="form-group">
-              <label for="password">Password</label>
-              <input type="text"
-                     formControlName="password"
-                     class="form-control"
-                     [ngClass]="{'is-invalid':password.errors && password.touched}"
-                     id="password"
-                     placeholder="Password">
-              <div class="invalid-feedback"
-                   *ngIf="password.hasError('required')">
-                  Password is required
-              </div>
-
-          </div>
-          <div class="form-group">
-              <label for="confirmPassword">Confirm Password</label>
-              <input type="password"
-                     formControlName="confirmPassword"
-                     class="form-control"
-                     [ngClass]="{'is-invalid':confirmPassword.errors && confirmPassword.touched}"
-                     id="confirmPassword"
-                     placeholder="Confirm Password"
-                     autocomplete>
-              <div class="invalid-feedback"
-                   *ngIf="confirmPassword.hasError('passwordMismatch')">
-                  Passwords Don't Match
-              </div>
-              <div class="invalid-feedback"
-                   *ngIf="confirmPassword.hasError('required')">
-                  Confirm password is required
-              </div>
-
-          </div>
-          <section formGroupName="address">
-              <div class="form-group">
-                  <label for="inputStreet">Street</label>
-                  <input type="text"
-                         formControlName="street"
-                         class="form-control"
-                         id="inputStreet"
-                         placeholder="1234 Main St">
-              </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                      <label for="inputCity">City</label>
-                      <input type="text"
-                             formControlName="city"
-                             class="form-control"
-                             id="inputCity">
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputState">State</label>
-                      <select id="inputState"
-                              formControlName="state"
-                              class="form-control">
-                          <option value=""
-                                  disabled>Choose a state</option>
-                          <option *ngFor="let state of stateOptions"
-                                  [ngValue]="state">
-                              {{ state }}
-                          </option>
-
-                      </select>
-                  </div>
-                  <div class="form-group col-md-2">
-                      <label for="inputZip">Zip</label>
-                      <input type="text"
-                             formControlName="zip"
-                             class="form-control"
-                             id="inputZip">
-                  </div>
-              </div>
-          </section>
-
-          <section formArrayName="daysAvailable">
-
-              <div class="row">
-                  <div class="col-md-9">
-                      <h4>Days Available</h4>
-                  </div>
-                  <div class="col-md-3">
-                      <button class="btn btn-primary"
-                              (click)="addDay()">Add Day</button>
-                  </div>
-
-              </div>
-
-
-              <div class="form-group"
-                   *ngFor="let day of daysAvailable.controls; let i=index">
-                  <label>Day</label>
-                  <input type="text"
-                         [formControlName]="i"
-                         class="form-control">
-
-              </div>
-
-          </section>
-
-          <p>
-              <button class="btn btn-success"
-                      type="submit"
-                      [disabled]="userForm.invalid"><i class="fas fa-save"></i> Save</button>
-              <button class="btn btn-warning"
-                      (click)="clear()"><i class="fas fa-snowplow"></i> Clear</button>
-              <button class="btn btn-info"
-                      (click)="autoFillAddress()"><i class="fas fa-address-card"></i> Auto Fill Address</button>
-          </p>
-      </form>
-
-  </div>
-
-</div>
--->

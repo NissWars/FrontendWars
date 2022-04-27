@@ -12,14 +12,42 @@ export class RegisterComponent{
 
   customStylesValidated = false; //kerrichanged
 
+  firstname: any;
+  lastname: any;
+  username: any;
+  mobile: number;
+  dob: number;
+  email: any;
+  pw: any;
+  pw2: any;
+  savebox1:boolean;
+  savebox2:boolean;
+  savebox3:boolean;
+  savebox4:boolean;
+  savebox5:boolean;
+  savebox6:boolean;
+  saveboxAgree:boolean;
+
   constructor( ) { }
 
   //ngOnInit(): void { } //kerrichanged
-  
-  //kerrichanged
   onSubmit1() {
     this.customStylesValidated = true;
-    console.log('Submit... 1');
+    console.log(this.firstname);
+    console.log(this.lastname);
+    console.log(this.username);
+    console.log(this.mobile);
+    console.log(this.dob);
+    console.log(this.email);
+    console.log(this.pw);
+    console.log(this.pw2);
+    console.log(this.savebox1);
+    console.log(this.savebox2);
+    console.log(this.savebox3);
+    console.log(this.savebox4);
+    console.log(this.savebox5);
+    console.log(this.savebox6);
+    console.log(this.saveboxAgree);
   }
   
   //kerrichanged
@@ -28,138 +56,20 @@ export class RegisterComponent{
     console.log('Reset... 1');
   }
 
+   onSaveCheckboxChanged(value:boolean){
+    this.savebox1 = value;
+    this.savebox2 = value;
+    this.savebox3 = value;
+    this.savebox4 = value;
+    this.savebox5 = value;
+    this.savebox6 = value;
 }
 
-
-
-
-
-
-/*
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Inject,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import {MatCalendar} from '@angular/material/datepicker';
-import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from '@angular/material/core';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
-
-/** @title Datepicker with custom calendar header 
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-
-
-
-export class RegisterComponent{
-
-  customStylesValidated = false; //kerrichanged
-
-  constructor( ) { }
-
-  //ngOnInit(): void { } //kerrichanged
-  
-  //kerrichanged
-  onSubmit1() {
-    this.customStylesValidated = true;
-    console.log('Submit... 1');
-  }
-  
-  //kerrichanged
-  onReset1() {
-    this.customStylesValidated = false;
-    console.log('Reset... 1');
-  }
+onSaveCheckbox(value:boolean){
+    this.saveboxAgree = value;
 
 }
 
-/** Custom header component for datepicker. 
-@Component({
-  selector: 'example-header',
-  styles: [
-    `
-    .example-header {
-      display: flex;
-      align-items: center;
-      padding: 0.5em;
-    }
-
-    .example-header-label {
-      flex: 1;
-      height: 1em;
-      font-weight: 500;
-      text-align: center;
-    }
-
-    .example-double-arrow .mat-icon {
-      margin: -22%;
-    }
-  `,
-  ],
-  template: `
-    <div class="example-header">
-      <button mat-icon-button class="example-double-arrow" (click)="previousClicked('year')">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-        <mat-icon>keyboard_arrow_left</mat-icon>
-      </button>
-      <button mat-icon-button (click)="previousClicked('month')">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-      </button>
-      <span class="example-header-label">{{periodLabel}}</span>
-      <button mat-icon-button (click)="nextClicked('month')">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-      <button mat-icon-button class="example-double-arrow" (click)="nextClicked('year')">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-    </div>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ExampleHeader<D> implements OnDestroy {
-  private _destroyed = new Subject<void>();
-
-  constructor(
-    private _calendar: MatCalendar<D>,
-    private _dateAdapter: DateAdapter<D>,
-    @Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
-    cdr: ChangeDetectorRef,
-  ) {
-    _calendar.stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => cdr.markForCheck());
-  }
-
-  ngOnDestroy() {
-    this._destroyed.next();
-    this._destroyed.complete();
-  }
-
-  get periodLabel() {
-    return this._dateAdapter
-      .format(this._calendar.activeDate, this._dateFormats.display.monthYearLabel)
-      .toLocaleUpperCase();
-  }
-
-  previousClicked(mode: 'month' | 'year') {
-    this._calendar.activeDate =
-      mode === 'month'
-        ? this._dateAdapter.addCalendarMonths(this._calendar.activeDate, -1)
-        : this._dateAdapter.addCalendarYears(this._calendar.activeDate, -1);
-  }
-
-  nextClicked(mode: 'month' | 'year') {
-    this._calendar.activeDate =
-      mode === 'month'
-        ? this._dateAdapter.addCalendarMonths(this._calendar.activeDate, 1)
-        : this._dateAdapter.addCalendarYears(this._calendar.activeDate, 1);
-  }
 }
-*/
+
+
