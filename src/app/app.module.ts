@@ -68,6 +68,7 @@ import { StarRatingComponent } from './views/star-rating/star-rating.component';
 import { EventDetailComponent } from './views/event/event-detail/event-detail.component';
 import { EventListComponent } from './views/event/event-list/event-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -125,6 +126,7 @@ const APP_CONTAINERS = [
     MaterialModule,
     HttpClientModule,
     NgbModule,
+    FontAwesomeModule,
   ],
   providers: [
     {

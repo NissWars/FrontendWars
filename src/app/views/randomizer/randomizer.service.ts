@@ -16,6 +16,6 @@ export class RandomizerService {
   }
 
   public sendGetAllTags(Id: String){
-    return this.httpClient.get("http://localhost:8080/event/list/allTagId/20220420000000000001");
+    return this.httpClient.get("http://localhost:8080/event/list/allTagId/20220420000000000000");
   }
 }
