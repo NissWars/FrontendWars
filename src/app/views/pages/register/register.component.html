@@ -95,58 +95,69 @@
               <h6 class="heading-small text-muted mb-4">Preference Selection (Please select at least 3: )</h6>
               <div>
                 <c-col [md]="3">
-                  <!--
+                  <!--5 tags to choose from-->
                   <c-form-check>
-                  <input cFormCheckInput id="validationSymposiums" required type="checkbox" />
-                  <label cFormCheckLabel for="validationSymposiums">Symposiums</label>
-                  </c-form-check>  -->
-                  <div>
-                    <c-form-check>
-                      <input #saveCheckBoxAll id="saveCheckBoxAll" name="saveAll" type="checkbox" [checked]="saveAll" (change)="onSaveCheckboxChanged(saveCheckBoxAll.checked)"/>
-                      <label>Select All</label>
-                    </c-form-check>
-                    </div>
+                    <input cFormCheckInput id="validationSymposiums" [(ngModel)]="Symposiums" name="Symposiums" required type="checkbox" />
+                    <label cFormCheckLabel for="validationSymposiums">Symposiums</label>
+                  </c-form-check>  
+                  
+                  <c-form-check>
+                    <input cFormCheckInput id="validationSymposiums" [(ngModel)]="Exhibitions" name="Exhibitions" required type="checkbox" />
+                    <label cFormCheckLabel for="validationSymposiums">Exhibitions</label>
+                  </c-form-check>  
+
+                  <c-form-check>
+                    <input cFormCheckInput id="validationSymposiums" [(ngModel)]="Concerts" name="Concerts" required type="checkbox" />
+                    <label cFormCheckLabel for="validationSymposiums">Concerts</label>
+                  </c-form-check>  
+
+                  <c-form-check>
+                    <input cFormCheckInput id="validationSymposiums" [(ngModel)]="Dining" name="Dining" required type="checkbox" />
+                    <label cFormCheckLabel for="validationSymposiums">Dining</label>
+                  </c-form-check>  
+
+                  <c-form-check>
+                    <input cFormCheckInput id="validationSymposiums" [(ngModel)]="Sports" name="Sports" required type="checkbox" />
+                    <label cFormCheckLabel for="validationSymposiums">Sports Activities</label>
+                  </c-form-check>  
+
+                  <!--
                   <div>
                   <c-form-check>
                     <input #saveCheckBox1 id="saveCheckBox1" name="saveCheckBox1" type="checkbox" [checked]="savebox1" (change)="onSaveCheckboxChanged(saveCheckBox1.checked)"/>
                     <label>Symposiums</label>
                   </c-form-check>
                   </div>
-
                   <div>
                   <c-form-check>
                     <input  #saveCheckBox2 id="saveCheckBox2" name="saveCheckBox2" type="checkbox" [checked]="savebox2" (change)="onSaveCheckboxChanged(saveCheckBox2.checked)"/>
                     <label >Exhibitions</label>
                   </c-form-check>
                   </div>
-
                   <div>
                   <c-form-check>
                     <input #saveCheckBox3 id="saveCheckBox3" name="saveCheckBox3" type="checkbox" [checked]="savebox3" (change)="onSaveCheckboxChanged(saveCheckBox3.checked)"/>
                     <label>Concerts</label>
                   </c-form-check>
-                </div>
-
-                <div>
-                  <c-form-check>
-                    <input  #saveCheckBox4 id="saveCheckBox4" name="saveCheckBox4" type="checkbox" [checked]="savebox4" (change)="onSaveCheckboxChanged(saveCheckBox4.checked)"/>
-                    <label >Workshops</label>
-                  </c-form-check>
-                  </div>
-
+                 </div>
                   <div>
-                  <c-form-check>
-                    <input #saveCheckBox5 id="saveCheckBox5" name="saveCheckBox5" type="checkbox" [checked]="savebox5" (change)="onSaveCheckboxChanged(saveCheckBox5.checked)"/>
-                    <label>Dining</label>
-                  </c-form-check>
-                  </div>
-
+                    <c-form-check>
+                      <input  #saveCheckBox4 id="saveCheckBox4" name="saveCheckBox4" type="checkbox" [checked]="savebox4" (change)="onSaveCheckboxChanged(saveCheckBox4.checked)"/>
+                      <label >Workshops</label>
+                    </c-form-check>
+                    </div>
+                    <div>
+                    <c-form-check>
+                      <input #saveCheckBox5 id="saveCheckBox5" name="saveCheckBox5" type="checkbox" [checked]="savebox5" (change)="onSaveCheckboxChanged(saveCheckBox5.checked)"/>
+                      <label>Dining</label>
+                    </c-form-check>
+                    </div>
                   <div>
-                  <c-form-check>
-                    <input  #saveCheckBox6 id="saveCheckBox6" name="saveCheckBox6" type="checkbox" [checked]="savebox6" (change)="onSaveCheckboxChanged(saveCheckBox6.checked)"/>
-                    <label >Sports Activities</label>
-                  </c-form-check>
-                </div>
+                    <c-form-check>
+                      <input  #saveCheckBox6 id="saveCheckBox6" name="saveCheckBox6" type="checkbox" [checked]="savebox6" (change)="onSaveCheckboxChanged(saveCheckBox6.checked)"/>
+                      <label >Sports Activities</label>
+                    </c-form-check>
+                  </div> -->
 
                 </c-col>
               </div> 
@@ -154,21 +165,23 @@
 
             <hr class="my-4" />
             <c-col [xs]="12">
-              <!--
+              
               <c-form-check>
                 <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
                 <label cFormCheckLabel for="invalidCheck">Agree to terms and conditions</label>
                 <c-form-feedback [valid]="false">You must agree before submitting</c-form-feedback>
-              </c-form-check>-->
+              </c-form-check>
+
+              <!--
               <c-form-check>                        
                 <input  #saveCheckBoxAgree id="saveCheckBoxAgree" name="saveCheckBoxAgree" type="checkbox" [checked]="saveboxAgree" (change)="onSaveCheckbox(saveCheckBoxAgree.checked)"/>
                 <label >Agree to terms and conditions</label>
-              </c-form-check>
+              </c-form-check> -->
 
 
             </c-col>
             <c-col [xs]="12">
-            <button cButton class="me-1" color="primary" type="submit" routerLink="/accountCreation"> <!--two-way data binding completed-->
+            <button cButton class="me-1" color="primary" type="submit" routerLink="/register"> <!--two-way data binding completed-->
               Submit 
             </button>
             <button (click)="onReset1()" cButton color="secondary" type="reset">

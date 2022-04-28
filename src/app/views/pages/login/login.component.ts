@@ -1,4 +1,15 @@
 import { Component } from '@angular/core';
+import {  OnInit } from '@angular/core';
+import { cilArrowBottom, cilArrowTop } from '@coreui/icons';
+import { LoginService } from './login.service';
+import { DatePipe } from '@angular/common'
+import { stringify } from '@angular/compiler/src/util';
+import { Router, RouterLink } from '@angular/router';
+
+export interface LoginDTO{
+  email?: any;
+  pw?: any;
+}
 
 @Component({
   selector: 'app-login',
@@ -6,17 +17,50 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  
   customStylesValidated = false
-  username: any;
+  email: any;
   pw: any;
+  detail: LoginDTO;
+  valid: Boolean;
 
-  constructor() { }
+  constructor(private loginService: LoginService, private router: Router) {
 
-  onSubmit1() {
+  
+    }
+
+  saveLogin() {
     this.customStylesValidated = true;
-    console.log('login...');
+    this.detail.email= this.email;
+    this.detail.pw = this.pw;
 
+
+    console.log('login...');
+    console.log(this.email);
+    console.log(this.pw);
+
+    
+
+
+
+    //service 
+    this.loginService.saveLogin(this.detail).subscribe((val:any)=>{
+      if (val == true){
+        this.valid = true
+      }else{this.valid = false}
+
+
+      if (this.valid == true){
+        this.router.navigate(['/randomizer'])
+      }
+      else{
+        alert('Incorrect Email or Password')
+      }
+
+
+
+    },response=>{console.log(response);});
   }
+
+
 
 }

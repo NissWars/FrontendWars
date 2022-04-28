@@ -14,7 +14,7 @@
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" [(ngModel)]="username" name="username"  type="text"/>
+                  <input autoComplete="username" cFormControl placeholder="Username" [(ngModel)]="email" name="email"  type="text"/>
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
@@ -33,12 +33,13 @@
 
               
 
+                  
 
 
 
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="px-4" color="primary"> <!--kerrichanged-->
+                    <button cButton class="px-4" color="primary" (click)="saveLogin()"> <!--kerrichanged-->
                       Login
                     </button>
                   </c-col>
