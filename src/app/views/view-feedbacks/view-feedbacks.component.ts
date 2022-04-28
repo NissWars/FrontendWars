@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { viewFeedBacksService } from './view-feedbacks.service' ;
 import { FeedBackView} from './view-feedbacks.model';
 
 @Component({
-  selector: 'app-view-feedbacks',
+  selector: 'app-view-feedbacks, [app-showfeedback]',
   templateUrl: './view-feedbacks.component.html',
   styleUrls: ['./view-feedbacks.component.scss']
 })
 export class ViewFeedbacksComponent implements OnInit {
+  @Input('app-showfeedback') inData:any;
 
   eventID = "20220420testevent14";
   feedBackView : FeedBackView[];
@@ -20,6 +21,10 @@ export class ViewFeedbacksComponent implements OnInit {
   constructor(private viewFeedBacksService : viewFeedBacksService) { }
 
   ngOnInit(): void {
+    if (this.inData != null) {
+      this.eventID = this.inData;
+      console.log(this.eventID);
+    }
 
     this.loadPage();
     

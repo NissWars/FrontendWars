@@ -7,7 +7,7 @@ import { EventService } from '../event.service';
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
-  styleUrls: ['./event-detail.component.scss']
+  styleUrls: ['./event-detail.component.scss', '../event.scss']
 })
 export class EventDetailComponent implements OnInit {
   eventID: string;

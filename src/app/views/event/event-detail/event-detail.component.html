@@ -1,1 +1,52 @@
-<p>{{currentEvent.eventName}}</p>
+<div class = "container p-2 pb-5 my-2">
+    <span class = "h2">{{currentEvent.eventName}}</span>
+    <div> <!--for tags-->
+        <span *ngFor="let tag of currentEvent.eventTags" class="badge1">
+            <span class = "badge bg-primary">{{tag.tagName}}</span>
+        </span>
+    </div>
+</div>
+
+<div></div><!-- place holder for images -->
+
+<div class = "container p-2 my-2">
+    <div class = "row">
+        <div class = "col">
+            <table class="table-borderless">
+                <tbody>
+                    <tr>
+                        <th scope = "row">Organizer</th>
+                        <td>{{currentEvent.organizerObj.orgName}}</td>
+                    </tr>
+                    <tr>
+                        <th scope = "row">Price</th>
+                        <td>${{currentEvent.price}}</td>
+                    </tr>
+                    <tr>
+                        <th scope = "row">Pax</th>
+                        <td>{{currentEvent.maximumPax}}</td>
+                    </tr>
+                    <tr>
+                        <th scope = "row">Start Time</th>
+                        <td>{{currentEvent.startTime}}</td>
+                    </tr>
+                    <tr>
+                        <th scope = "row">End Time</th>
+                        <td>{{currentEvent.endTime}}</td>
+                    </tr>
+                    <tr>
+                        <th scope = "row">Location</th>
+                        <td>{{currentEvent.location}}</td>
+                    </tr>
+                    <tr>
+                        <th scope = "row">Point For Completion</th>
+                        <td>{{currentEvent.pointCompletion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class = "col">
+            <div [app-showfeedback]="currentEvent.eventSerialNumber"></div>
+        </div>
+    </div>
+</div>
