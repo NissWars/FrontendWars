@@ -17,7 +17,6 @@
 
             <h1>Register</h1>
               <p class="text-medium-emphasis">Create a User account</p>
-
             <c-col [md]="4">
             <label cLabel for="validationCustom01">First name</label>
             <input cFormControl id="validationCustom01" [(ngModel)]="firstname" name="firstname" required type="text" />
@@ -54,15 +53,15 @@
             </c-col>
 
 
-          <!--
-            <mat-form-field appearance="fill">
-              <mat-label>Custom calendar header</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker>
-            </mat-form-field>
-          -->
+            <!--
+              <mat-form-field appearance="fill">
+                <mat-label>Custom calendar header</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker>
+              </mat-form-field>
+            -->
             
 
 
@@ -101,6 +100,12 @@
                   <input cFormCheckInput id="validationSymposiums" required type="checkbox" />
                   <label cFormCheckLabel for="validationSymposiums">Symposiums</label>
                   </c-form-check>  -->
+                  <div>
+                    <c-form-check>
+                      <input #saveCheckBoxAll id="saveCheckBoxAll" name="saveAll" type="checkbox" [checked]="saveAll" (change)="onSaveCheckboxChanged(saveCheckBoxAll.checked)"/>
+                      <label>Select All</label>
+                    </c-form-check>
+                    </div>
                   <div>
                   <c-form-check>
                     <input #saveCheckBox1 id="saveCheckBox1" name="saveCheckBox1" type="checkbox" [checked]="savebox1" (change)="onSaveCheckboxChanged(saveCheckBox1.checked)"/>
@@ -163,7 +168,7 @@
 
             </c-col>
             <c-col [xs]="12">
-            <button cButton class="me-1" color="primary" type="submit">
+            <button cButton class="me-1" color="primary" type="submit" routerLink="/accountCreation"> <!--two-way data binding completed-->
               Submit 
             </button>
             <button (click)="onReset1()" cButton color="secondary" type="reset">

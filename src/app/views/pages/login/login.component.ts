@@ -6,7 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  
+  customStylesValidated = false
+  username: any;
+  pw: any;
 
   constructor() { }
+
+  onSubmit1() {
+    this.customStylesValidated = true;
+    console.log('login...');
+
+  }
 
 }

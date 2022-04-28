@@ -4,33 +4,41 @@
       <c-col md="10">
         <c-card-group>
           <c-card class="p-4">
+
+
+            
             <c-card-body>
-              <form cForm>
                 <h1>Login to WARS</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
+                  <input autoComplete="username" cFormControl placeholder="Username" [(ngModel)]="username" name="username"  type="text"/>
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input autoComplete="current-password" cFormControl placeholder="Password" type="password"/>
+                  <input autoComplete="current-password" cFormControl placeholder="Password" [(ngModel)]="pw" name="pw"  type="password"/>
                 </c-input-group>
                 <div class="form-check form-check-inline"> <!--kerrichanged-->
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"  checked>
                   <label class="form-check-label" for="inlineRadio1">Login as User</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"  >
                   <label class="form-check-label" for="inlineRadio2">Login as Organizer</label>
                 </div>
+
+              
+
+
+
+
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="px-4" color="primary" routerLink="/dashboard"> <!--kerrichanged-->
+                    <button cButton class="px-4" color="primary"> <!--kerrichanged-->
                       Login
                     </button>
                   </c-col>
@@ -39,9 +47,9 @@
                       Forgot password?
                     </button>
                   </c-col>
-                </c-row>
-              </form>
+                </c-row>            
             </c-card-body>
+
           </c-card>
           <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
             <c-card-body class="text-center">

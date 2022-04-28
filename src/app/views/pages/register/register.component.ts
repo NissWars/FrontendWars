@@ -20,6 +20,7 @@ export class RegisterComponent{
   email: any;
   pw: any;
   pw2: any;
+  saveAll:boolean;
   savebox1:boolean;
   savebox2:boolean;
   savebox3:boolean;
@@ -41,6 +42,7 @@ export class RegisterComponent{
     console.log(this.email);
     console.log(this.pw);
     console.log(this.pw2);
+    console.log(this.saveAll)
     console.log(this.savebox1);
     console.log(this.savebox2);
     console.log(this.savebox3);
@@ -63,6 +65,7 @@ export class RegisterComponent{
     this.savebox4 = value;
     this.savebox5 = value;
     this.savebox6 = value;
+    this.saveAll = value;
 }
 
 onSaveCheckbox(value:boolean){
