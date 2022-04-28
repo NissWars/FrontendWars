@@ -1,0 +1,112 @@
+
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+          <form>
+            <h1>My Account </h1>
+            <p class="text-medium-emphasis">User Information</p>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-username">Username</label>
+                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Email address</label>
+                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">First name</label>
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Last name</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="dob">DOB</label>
+                    <input type="date" id="dob" class="form-control form-control-alternative" placeholder="Date of Birth" >
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="password">New Password</label>
+                    <input type="text" id="password" class="form-control form-control-alternative" placeholder="Enter New Password" >
+                  </div>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="RePassword">Repeat Password</label>
+                      <input type="text" id="RePassword" class="form-control form-control-alternative" placeholder="Repeat New Password" >
+                    </div>
+                  </div>
+                  </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <h6 class="heading-small text-muted mb-4">Contact Information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="mobile">Mobile No.</label>
+                    <input type="number" id="mobile" class="form-control form-control-alternative" placeholder="Mobile Number">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <h6 class="heading-small text-muted mb-4">Preference Type</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="preference">Preference Type</label>
+                    <input type="text" id="preference" class="form-control form-control-alternative" placeholder="Preference Type">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="points">Points Balance</label>
+                    <input type="email" id="points" class="form-control form-control-alternative" placeholder="Points Balance">
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <hr class="my-4" />
+          </form>
+          <button cButton class="me-1" color="primary" type="submit">
+            Update account details
+          </button>
+          <div>
+          <button cButton class="px-0" color="link" routerLink="/dashboard">  
+            Click here to return to home page
+          </button>
+          </div>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</c-container>
+
+

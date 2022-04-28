@@ -1,58 +1,18 @@
-<!--
-  <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
   <c-container>
     <c-row class="justify-content-center">
-      <c-col md="8">
-        <c-card-group>
-          <c-card class="p-4">
-            <c-card-body>
-              <form cForm>
-                <h1>Login</h1>
-                <p class="text-medium-emphasis">Sign In to your account</p>
-                <c-input-group class="mb-3">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
-                </c-input-group>
-                <c-input-group class="mb-4">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
-                  />
-                </c-input-group>
-              </form>
-            </c-card-body>
-          </c-card>
-        </c-card-group>
-      </c-col>
-    </c-row>
-  </c-container>
-</div>
--->
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
 
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="text-center">
-          <h1> This page works! </h1>
+          <h1> Register </h1>
           <form>
             <div class="alert alert-success" role="alert">
               Your account is created successfully
             </div>
           </form>
-          <button cButton class="px-0" color="link"> 
-            Click here to Login
-          </button>
+
           <form>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
@@ -63,10 +23,21 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Click here to Login</button>
           </form>
-        </div>
-      </div>
-    </div>
-  </div>
+
+            <hr class="my-4" />
+          <button cButton class="me-1" color="primary" type="submit" routerLink="/dashboard">
+            Login
+          </button>
+          <div>
+          <button cButton class="px-0" color="link" routerLink="/login">  
+            Click here to return to home page
+          </button>
+          </div>
+
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</c-container>
 </div>

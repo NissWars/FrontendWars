@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconModule } from '@coreui/icons-angular';
 import { WalletRoutingModule } from './wallet-routing.module';
+import { FormsModule } from '@angular/forms';
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -35,7 +36,8 @@ import { WalletComponent } from './wallet.component';
     TabsModule,
     PaginationModule,
     IconModule,
-    ModalModule
+    ModalModule,
+    FormsModule
   ]
 })
 export class WalletModule { }

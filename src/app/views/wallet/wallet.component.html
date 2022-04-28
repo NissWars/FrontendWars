@@ -12,14 +12,13 @@
                     <th style="width:1px" scope="col">SGD($)</th>
                     <th style="width:600px;text-align: center;" scope="col">{{balance}}</th>
                     <th style="width:1px" scope="col">
-                        <button cButton color="primary" size="sm" class="rounded-pill">Top Up</button>
+                        <button [cModalToggle]="staticBackdropModal.id" cButton color="primary" size="sm" class="rounded-pill">Top Up</button>
                     </th>
                 </tr>
             </thead>
         </table>
     </c-card>
     <hr />
-    <button [cModalToggle]="staticBackdropModal.id" cButton>Launch static backdrop modal</button>
     <c-card class="mb-4 card">
         <c-card-header class="card-header" style="font-family: Roboto;font-weight: 900;font-size: larger"
             align="center">
@@ -29,15 +28,15 @@
             class="mb-0 border">
             <thead cTableColor="light">
                 <tr>
-                    <th>Id <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
+                    <th>Id <button style="border-style: none;background-color: white;" (click)="onSort(1)"> <svg cIcon
                                 [name]="iconType"></svg></button></th>
-                    <th>Name <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
+                    <th>Name <button style="border-style: none;background-color: white;" (click)="onSort(2)"> <svg cIcon
                                 [name]="iconType"></svg></button></th>
-                    <th>Payment Method <button style="border-style: none;background-color: white;"> <svg cIcon
+                    <th>Payment Method <button style="border-style: none;background-color: white;" (click)="onSort(3)"> <svg cIcon
                                 [name]="iconType"></svg></button></th>
-                    <th>Amount <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg cIcon
+                    <th>Amount <button style="border-style: none;background-color: white;" (click)="onSort(4)"> <svg cIcon
                                 [name]="iconType"></svg></button></th>
-                    <th>Date/Time <button style="border-style: none;background-color: white;" (click)="onSort()"> <svg
+                    <th>Date/Time <button style="border-style: none;background-color: white;" (click)="onSort(5)"> <svg
                                 cIcon [name]="iconType"></svg></button></th>
                 </tr>
             </thead>
@@ -53,7 +52,7 @@
                         {{ user.paymentMethodDesc }}
                     </td>
                     <td>
-                        <div>{{ user.topUpAmount }}</div>
+                        <div>{{ user.topUpAmount}}</div>
                     </td>
                     <td>
                         <div>{{ user.creationDateTime | date: 'yyyy-MM-dd HH:mm'}}</div>
@@ -81,14 +80,23 @@
 
 <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal">
     <c-modal-header>
-        <h5 cModalTitle>Modal title</h5>
+        <h5 cModalTitle>Confirmation</h5>
         <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
     </c-modal-header>
-    <c-modal-body>Woohoo, you&#39;re reading this text in a modal!</c-modal-body>
+    <c-modal-body>
+        Please select payment Method<br>
+        Amount(SGD) :<input type="number" maxlength="6" [(ngModel)]="amount" class="position-absolute end-35"/> <br><br>
+        Method of Payment: <select (change)="onSelect()" [(ngModel)]="currPayment"><option selected="1" value={{x}} *ngFor="let x of paymentType;">{{x}}</option></select><br>
+        <p *ngIf="currPayment==paymentType[2]||currPayment==paymentType[3]"> <br>
+        Credit Card No:<input type="number" [(ngModel)]="creditCard" class="position-absolute end-35"/> <br><br>
+        Expiry Date:<input type="Text" class="position-absolute end-35" maxlength="4"/><br><br>
+        CVV No:<input type="Text" class="position-absolute end-35" maxlength="3"/><br><br>
+        </p>
+    </c-modal-body>
     <c-modal-footer>
         <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
             Close
         </button>
-        <button cButton color="primary">Understood</button>
+        <button cButton color="primary" (click)="onTopUp()" [cModalToggle]="staticBackdropModal.id">Confirm</button>
     </c-modal-footer>
 </c-modal>

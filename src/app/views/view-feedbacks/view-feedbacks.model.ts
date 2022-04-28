@@ -2,7 +2,8 @@ export class FeedBackView{
     constructor(
         public rating?: number,
         public comment?: string,
-        public file?: FormData,
+        public image?: any,
+        public userName?: string,
       ) {
       }
 

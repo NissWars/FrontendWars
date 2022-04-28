@@ -11,10 +11,15 @@ import { MaterialModule } from './material/material.module';
 //import {matIconModule} from '@angular/material/icon'; //kerrichangedvalidate
 //import { RegisterComponent } from './views/pages/register/register.component'; //kerrichangedvalidate
 import { feedBackService } from './views/feedback/feedback.service';
+import { EventService } from './views/event/event.service';
 import { viewFeedBacksService } from './views/view-feedbacks/view-feedbacks.service';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 import { HttpClientModule } from '@angular/common/http';
+
+// Common Component
+import { SuccessModalComponent } from "./views/modal/success-modal.component";
+import { ConfirmationModalComponent } from "./views/modal/confirmation-modal.component";
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -62,6 +67,8 @@ import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.co
 import { StarRatingComponent } from './views/star-rating/star-rating.component';
 import { EventDetailComponent } from './views/event/event-detail/event-detail.component';
 import { EventListComponent } from './views/event/event-list/event-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -74,7 +81,16 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, FeedbackComponent, ViewFeedbacksComponent , StarRatingComponent, EventDetailComponent, EventListComponent, ],
+  declarations: [AppComponent, ...APP_CONTAINERS, 
+    FeedbackComponent,
+    ViewFeedbacksComponent ,
+    StarRatingComponent,
+    SuccessModalComponent,
+    ConfirmationModalComponent,
+    EventDetailComponent, 
+    EventListComponent,
+
+  ],
   imports: [
    // matCardModule, //kerrichangedvalidate
    // matButtonModule, //kerrichangedvalidate
@@ -108,7 +124,9 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    FontAwesomeModule,
   ],
   providers: [
     {
@@ -125,7 +143,7 @@ const APP_CONTAINERS = [
     MessageService,
     viewFeedBacksService,
     HttpErrorHandler,
-    
+    EventService,
   ],
   bootstrap: [AppComponent],
 })

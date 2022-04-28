@@ -7,6 +7,7 @@
       <c-card-header ngPreserveWhitespaces>
         <strong>Angular Tabs</strong> <small>underline</small>
       </c-card-header>
+
       <c-card-body>
         <c-nav variant="tabs">
           <c-nav-item>
@@ -45,8 +46,12 @@
           <!--        </c-tab-pane>-->
         </c-tab-content>
       </c-card-body>
+      
     </c-card>
   </c-col>
+
+
+
   <c-col xs="12">
     <c-card class="mb-3">
       <c-card-header ngPreserveWhitespaces>
@@ -62,6 +67,7 @@
             </a>
           </c-nav-item>
         </c-nav>
+
         <c-tab-content #tabContent2="cTabContent" [activeTabPaneIdx]="1" cRounded="bottom">
           <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3 preview">
             This is some placeholder content the <strong>{{pane.name}}</strong> tab's associated content. Clicking
@@ -70,9 +76,12 @@
             navigation.
           </c-tab-pane>
         </c-tab-content>
+
       </c-card-body>
     </c-card>
   </c-col>
+
+
   <c-col xs="12">
     <c-card class="mb-3">
       <c-card-header ngPreserveWhitespaces>
