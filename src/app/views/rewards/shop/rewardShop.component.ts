@@ -4,6 +4,7 @@ import { AnyForUntypedForms } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RewardShopService } from './reward-shop.service';
 import { RewardItemView } from './reward-shop.model';
+
 interface REWARD_ITEM {
   REWARD_ITEM_ID: string;
   AMOUNT_LEFT: any;
@@ -16,36 +17,7 @@ interface REWARD_ITEM {
   LAST_UPDATE_DATETIME: Date;
   LAST_UPDATE_USER: string;
 };
-/*
-interface rewardItemInterface {
-  name: string;
-  cost: any;
-  image: typeof Image;
-  stockLeft: any;
-};
-// Test images. Pls remove these imgArray and delete images folder when db-connected
-var imgArray = new Array();
-imgArray[0] = new Image();
-imgArray[0].src = './images/sampleImg1.jpg';
-imgArray[1] = new Image();
-imgArray[1].src = 'images/sampleImg2.jpg';
 
-function getRewards(): Promise<REWARD_ITEM[]> {
-  return fetch('/rewardShop/all')
-          // the JSON body is taken from the response
-          .then(res => res.json())
-          .then(res => {
-                  // The response has an `any` type, so we need to cast
-                  // it to the `User` type, and return it from the promise
-                  return res as REWARD_ITEM[]
-          })
-}
-
-var rewardItemsTest = [
-  {name: "Chocolate Cookies", cost: 12, image: imgArray[0], stockLeft: 2},
-  {name: "Strawberry Cake", cost: 25, image: imgArray[1], stockLeft: 1},
-  {name: "Durian Ice-cream", cost: 2, image: imgArray[1], stockLeft: 0}
-];*/
 var REWARD_ITEM_TEST =[
   {
     REWARD_ITEM_ID: "3a", AMOUNT_LEFT: 21, REWARD_POINT_NEEDED: 21, ITEM_NAME: "Chocolate Cookies",
@@ -78,10 +50,9 @@ export class RewardShopComponent implements OnInit {
   now: Date = new Date();
   minFromDate!: string;
   minToDate: any;
-  //participants3: any;
-  //cost3: any;
+
   balanceAmount: any;
-  //rewardItems: rewardItemInterface[] = rewardItemsTest;
+
   REWARD_ITEM: REWARD_ITEM[] = REWARD_ITEM_TEST;
 
   rewardItemView : RewardItemView[];
@@ -91,31 +62,21 @@ export class RewardShopComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.minFromDate = this.dateFunc(this.now);
-    //this.now.setDate(this.now.getDate()+1);
-    //this.minToDate = this.dateFunc(this.now);
-    //this.participants3 = 2;
-    //this.cost3 = 0;
     this.balanceAmount = 54;
-    /*
-    var databaseQueryRewards = this.service.getAllRewards().subscribe(resp => {
-      console.log('success');
-    });;*/
-    var databaseQueryRewards =  this.service.getAllRewards().subscribe(
+
+    this.service.getAllRewards().then(
       (res:any) => {
-        
-        this.rewardItemView = res["data"];
-        
-      },
+        console.log(res[0].itemName);
+  
+        this.REWARD_ITEM[0].ITEM_NAME = res[0].itemName;
+
+      }
     );
-    this.REWARD_ITEM[0].ITEM_NAME = databaseQueryRewards[0].ITEM_NAME;
+
   }
   onRetrieveButtonClick(optionChosen: number): void {
-    //this.cost3 = 87;
     let UserConfirmationVar = confirm("Are you sure you want to claim the prize: " + REWARD_ITEM_TEST[optionChosen- 1].ITEM_NAME);
     if(UserConfirmationVar == true){
-      //this.cost3 = optionChosen;
       if(this.balanceAmount < REWARD_ITEM_TEST[optionChosen- 1].REWARD_POINT_NEEDED){
         alert("Insufficient balance to claim the prize");
       }
@@ -129,21 +90,8 @@ export class RewardShopComponent implements OnInit {
       }
       
     } else{
-      //this.cost3 = 16;
-      //var RewardList = getRewards();
-      //this.cost3 = RewardList[0].REWARD_POINT_NEEDED;
+
     }
   }
-  dateFunc(today:Date): string{
-    var dd:string = today.getDate().toString();
-    var mm:string = (today.getMonth()+1).toString();
-    var yyyy = today.getFullYear();
-    if(today.getDate()<10){
-      dd='0'+dd;
-    }
-    if(today.getMonth()+1<10){
-      mm='0'+mm
-    }
-    return yyyy+'-'+mm+'-'+dd;
-  }
+  
 }

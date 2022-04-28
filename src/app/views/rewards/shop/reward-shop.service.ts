@@ -22,13 +22,15 @@ export class RewardShopService {
     httpErrorHandler: HttpErrorHandler) {
     this.handleError = httpErrorHandler.createHandleError('AccessRightService');
   }
-  /*
-  getAllRewards(eventID: any): Observable<any> {
-    return this.http.get(`${this.getAllRewardsUrl}?eventID=${eventID}`)
-      .pipe(catchError(this.handleError('getViewRewardsList', eventID)));
-  }*/
-  getAllRewards(): Observable<any> {
-    return this.http.get(`${this.getAllRewardsUrl}`)
-      .pipe(catchError(this.handleError('getViewRewardsList')));
+
+  public getAllRewards(): any {
+    return new Promise((resolve) =>{
+      this.http.get(this.getAllRewardsUrl).pipe().subscribe(data => {
+
+        resolve(data);
+      
+      });
+    });
   }
+  
 }
