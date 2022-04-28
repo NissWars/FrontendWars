@@ -1,8 +1,12 @@
 export const backendBaseUrl = "http://localhost:8080/";
 export const backendEventUrl = "event/";
 
-export const registrationStatusNew = "new";
-export const registrationStatusRegistered = "registered";
-export const registrationStatusPaid = "paid";
-export const registrationStatusComplete = "complete";
-export const registrationStatusFeedbackFinished = "feedback";
+export const DATETIME_FORMAT = "YYYY/MM/DD HH:mm:ss.SSS";
+
+export enum registrationStatus {
+    NEW = "new",
+    REGISTERED = "registered",
+    PAID = "paid",
+    EVENT_FINISHED = "eventFinished",
+    FEEDBACK_FINISHED = "feedbackComplete",
+}

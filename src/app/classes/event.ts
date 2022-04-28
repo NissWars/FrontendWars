@@ -1,6 +1,7 @@
 import { Organizer } from "./organizer";
 import { Tag } from "./tag";
 import { EventImage } from "./eventImage";
+import { registrationStatus } from "./constants";
 
 export class Event {
     public eventID? : string;
@@ -17,4 +18,7 @@ export class Event {
     public organizerObj? : Organizer;
     public eventTags? : Tag[];
     public eventImages? : EventImage[];
+
+    public currentUserRegistrationStatus? : registrationStatus;
+    public currentPax?: number;
 }

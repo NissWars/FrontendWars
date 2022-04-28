@@ -10,17 +10,17 @@ import { EventService } from '../event.service';
   styleUrls: ['./event-detail.component.scss', '../event.scss']
 })
 export class EventDetailComponent implements OnInit {
+  testUserID: string = "20220420000000000000";
   eventID: string;
   currentEvent: Event;
 
-  registrationStatus: string = constants.registrationStatusNew;
-  showRegisterButton: Boolean = (this.registrationStatus == constants.registrationStatusNew); 
-  showPaymentButton: Boolean = (this.registrationStatus == constants.registrationStatusRegistered); 
-  showFeedbackButton: Boolean = (this.registrationStatus == constants.registrationStatusComplete); 
-  showCancelButton: Boolean = ((this.registrationStatus == constants.registrationStatusRegistered) ||
-                                 (this.registrationStatus == constants.registrationStatusPaid)); 
+  registrationStatus: string = constants.registrationStatus.NEW;
+  showRegisterButton: Boolean;
+  showPaymentButton: Boolean;
+  showFeedbackButton: Boolean;
+  showCancelButton: Boolean;
 
-  constructor(private route: ActivatedRoute, private eventService : EventService) { 
+  constructor(private route: ActivatedRoute, private eventService : EventService) {
     this.route.queryParams.subscribe(params => {
         this.eventID = params['eventID'];
       }
@@ -30,12 +30,22 @@ export class EventDetailComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.getEventDetail(this.eventID).then((data) => {
       this.currentEvent = data;
+      this.registrationStatus = this.currentEvent.currentUserRegistrationStatus;
+
+      this.showRegisterButton = (this.registrationStatus == constants.registrationStatus.NEW); 
+      this.showPaymentButton= (this.registrationStatus == constants.registrationStatus.REGISTERED); 
+      this.showFeedbackButton = (this.registrationStatus == constants.registrationStatus.EVENT_FINISHED); 
+      this.showCancelButton = ((this.registrationStatus == constants.registrationStatus.REGISTERED) ||
+                                    (this.registrationStatus == constants.registrationStatus.PAID)); 
       console.log(this.currentEvent);
     });
   }
 
   registerEvent(): void {
     console.log("register");
+    this.eventService.registerToEvent(this.eventID, this.testUserID).then((data) => {
+      console.log(data);
+    });
   }
 
   cancelEvent(): void {
