@@ -11,14 +11,16 @@
     * {margin: 0; padding: 0;}
     #container {height: 100%; width:100%; font-size: 0;}
     #left, #middle, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; padding:10px;font-size: 16px;}
-    #left {width: 30%; background: rgb(0, 149, 255);}
+    #left {width: 30%; background: rgb(157, 192, 216);}
     #middle {width: 30%; background: rgb(171, 228, 171);}
     #right {width: 30%; background: rgb(209, 209, 164);}
 
     #rewardName {top: 10%}
     #rewardCost {top: 20%}
-    #rewardImage {top: 30%}
-    #claimButton {top: 40%}
+    #rewardLeft {top: 30%}
+    #rewardDeadline {top: 40%}
+    #rewardImage {top: 50%}
+    #claimButton {top: 60%}
 </style>
 
 <div>
@@ -32,50 +34,61 @@
         <div id="container">
             <div id="left">
                 <div id="rewardName">
-                    <label>item1: </label>&nbsp;{{rewardItems[0].name}}
+                    <label>Name: </label>&nbsp;{{REWARD_ITEM[0].ITEM_NAME}}
                 </div>
                 <div id="rewardCost">
-                    <label>Cost: 32</label>
+                    <label>Cost: </label>&nbsp;{{REWARD_ITEM[0].REWARD_POINT_NEEDED}}
                 </div>
+                <div id="rewardLeft">
+                    <label>Remaining: </label>&nbsp;{{REWARD_ITEM[0].AMOUNT_LEFT}}
+                </div>
+
                 <div id="rewardImage">
-                    <img [src]="rewardItems[0].image" width="150" height="200">
+                    <img src="/assets/images/ChocolateCookies.jpg" width="150" height="200">
                 </div>  
                 &nbsp;
-                <button id="claimButton" type="button" class="claimButton" (click)="onRetrieveButtonClick(1)">Retrieve</button>
+                <button type="button" class="claimButton" (click)="onRetrieveButtonClick(1)">Retrieve</button>
             
             &nbsp;
             </div>
             &nbsp;
             <div id="middle">
                 <div id="rewardName">
-                    <label>item2: </label> &nbsp; {{rewardItems[0].name}}
+                    <label>Name: </label> &nbsp; {{REWARD_ITEM[1].ITEM_NAME}}
                 </div>
                 <div id="rewardCost">
-                    <label>Cost: 32</label>
+                    <label>Cost: </label>&nbsp;  {{REWARD_ITEM[1].REWARD_POINT_NEEDED}}
+                </div>
+                <div id="rewardLeft">
+                    <label>Remaining: </label>&nbsp;{{REWARD_ITEM[1].AMOUNT_LEFT}}
                 </div>
                 <div id="rewardImage">
-                    <img [src]="rewardItems[0].image" width="150" height="200">
+                    <img src="/assets/images/Tea.jpg" width="150" height="200">
                 </div>  
                 &nbsp;
-                <button type="button" class="claimButton">Retrieve</button>
+                <button type="button" class="claimButton" (click)="onRetrieveButtonClick(2)">Retrieve</button>
             </div>
             &nbsp;
             <div id="right">
                 <div id="rewardName">
-                    <label>item3: </label> &nbsp; {{rewardItems[0].name}}
+                    <label>Name: </label> &nbsp; {{REWARD_ITEM[2].ITEM_NAME}}
                 </div>
                 <div id="rewardCost">
-                    <label>Cost: 32</label>
+                    <label>Cost: </label>&nbsp;  {{REWARD_ITEM[2].REWARD_POINT_NEEDED}}
+                </div>
+                <div id="rewardLeft">
+                    <label>Remaining: </label>&nbsp;{{REWARD_ITEM[2].AMOUNT_LEFT}}
                 </div>
                 <div id="rewardImage">
-                    <img [src]="rewardItems[0].image" width="150" height="200">
+                    <img src="/assets/images/Pancake.jpg" width="150" height="200">
                 </div>  
                 &nbsp;
-                <button type="button" class="claimButton">Retrieve</button>
+                <button type="button" class="claimButton" (click)="onRetrieveButtonClick(3)">Retrieve</button>
             </div>
             
         </div>
         &nbsp;&nbsp;
+        <!--
         <div id="container">
             <div id="left">
                 <div id="rewardName">
@@ -91,9 +104,6 @@
                 <button type="button" class="claimButton" (click)="onRetrieveButtonClick(2)">Retrieve</button>
             </div>
             
-        </div>
+        </div>-->
     </div>
 </div>
-
-
-<button cButton size="sm" class="position-absolute top-11 end-10 rounded-0" style="width: 63px;height: 30px;text-align:center;line-height:1em;background-color:	#C0C0C0;border-color:grey;font-size:13px;color:#2E2E2E">Refresh</button>

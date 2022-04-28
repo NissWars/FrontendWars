@@ -8,6 +8,8 @@ import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { FeedbackComponent } from './views/feedback/feedback.component';
 import { ViewFeedbacksComponent } from './views/view-feedbacks/view-feedbacks.component';
+import { EventListComponent } from './views/event/event-list/event-list.component';
+import { EventDetailComponent } from './views/event/event-detail/event-detail.component';
 import { accountCreationComponent } from './views/pages/accountCreation/accountCreation.component'; //kerrichanged
 import { registerOrganizerComponent } from './views/pages/registerOrganizer/registerOrganizer.component';
 import { profileComponent } from './views/pages/profile/profile.component'; //kerrichanged
@@ -39,6 +41,13 @@ const routes: Routes = [
       {
         path: 'viewfeedback', component: ViewFeedbacksComponent
     
+      },
+
+      {
+        path: 'event', children : [
+          {path: 'list', component: EventListComponent},
+          {path: 'detail', component: EventDetailComponent},
+        ]
       },
 
       {

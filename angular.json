@@ -32,7 +32,8 @@
             "preserveSymlinks": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/views/rewards/shop/images"
             ],
             "styles": [
               "src/scss/styles.scss"

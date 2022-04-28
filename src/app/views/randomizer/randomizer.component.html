@@ -1,19 +1,25 @@
-<script type="text/javascript">alert("this works")</script> 
+<div>
+<c-row class="align-self-end">
+    <button cButton (click)="onRefresh()" *ngIf="randomTriggered" size="sm" class ="position-relative start-100" style="width: 63px;height: 30px;text-align:center;line-height:1em;background-color:	#C0C0C0;border-color:grey;font-size:13px;color:#2E2E2E;outline:none;">Refresh</button>
+</c-row>
+<br>
 <c-row>
-<c-col [md]="3" class="position-absolute top-16 start-16">
-    <c-card class="mh-100" style="width: 250px;height: 330px;">
-        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
+<c-col class="align-self-start">
+    <c-card class="mh-50" style="width: 250px;height: 330px;">
+        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="/assets/images/card-back.jpg">
         <c-card-img-overlay *ngIf="randomTriggered">
-            <c-card-body >
-                <h5 cCardTitle style="color: black;">{{cardValues.name1}}</h5>
-                <p cCardText *ngIf="cardValues.participants1==0;">
-                    Unrated
+            <c-card-body (click)="cardClick(1)">
+                <h6 cCardTitle style="color: black;">{{cardValues.name1}}</h6>
+                <br>
+                <p cCardText *ngIf="cardValues.feedback1==0;">
+                    Unrated<br><br>
+                </p>
+                <p cCardText *ngIf="cardValues.feedback1>0;">
+                    Number of stars:<br>
+                    <ng-container *ngFor="let _ of [].constructor(cardValues.feedback1)"><fa-icon [icon]="faStar" style="color:greenyellow"></fa-icon></ng-container>
                 </p>
                 <p cCardText *ngIf="cardValues.participants1>0;">
-                    Number of stars:
-                </p>
-                <p cCardText *ngIf="cardValues.participants1>0;">
-                    Total past partipants: {{cardValues.participants1}} <br>
+                    Max partipants: {{cardValues.participants1}} <br>
                 </p>
                 <p cCardText *ngIf="cardValues.participants1==0;" style="font-family: Impact">
                     New Event!!!! <br>
@@ -31,20 +37,22 @@
         </c-card-img-overlay>
     </c-card>
 </c-col>
-<c-col [md]="3" class="position-absolute top-16 start-40">
-    <c-card class="mh-100" style="width: 250px;height: 330px;">
-        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
+<c-col class="align-self-center" [offset]="{md: 1}">
+    <c-card class="mh-50" style="width: 250px;height: 330px;">
+        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="/assets/images/card-back.jpg">
         <c-card-img-overlay *ngIf="randomTriggered">
-            <c-card-body >
-                <h5 cCardTitle style="color: black;">{{cardValues.name2}}</h5>
-                <p cCardText *ngIf="cardValues.participants2==0;">
-                    Unrated
+            <c-card-body (click)="cardClick(2)">
+                <h6 cCardTitle style="color: black;">{{cardValues.name2}}</h6>
+                <br>
+                <p cCardText *ngIf="cardValues.feedback2==0;">
+                    Unrated<br><br>
+                </p>
+                <p cCardText *ngIf="cardValues.feedback2>0;">
+                    Number of stars:<br>
+                    <ng-container *ngFor="let _ of [].constructor(cardValues.feedback2)"><fa-icon [icon]="faStar" style="color:greenyellow"></fa-icon></ng-container>
                 </p>
                 <p cCardText *ngIf="cardValues.participants2>0;">
-                    Number of stars:
-                </p>
-                <p cCardText *ngIf="cardValues.participants2>0;">
-                    Total past partipants: {{cardValues.participants2}} <br>
+                    Max partipants: {{cardValues.participants2}} <br>
                 </p>
                 <p cCardText *ngIf="cardValues.participants2==0;" style="font-family: Impact">
                     New Event!!!! <br>
@@ -62,20 +70,22 @@
         </c-card-img-overlay>
     </c-card>
 </c-col>
-<c-col [md]="3" class="position-absolute top-16 start-64">
-    <c-card class="mh-100" style="width: 250px;height: 330px;">
-        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="https://cdna.artstation.com/p/assets/images/images/019/375/364/large/clarissa-choi-back.jpg?15632133522">
+<c-col class="align-self-end" [offset]="{md: 1}">
+    <c-card class="mh-50" style="width: 250px;height: 330px;">
+        <img class="rounded border border-3 border-warning" [style]="cardStyle" src="/assets/images/card-back.jpg">
         <c-card-img-overlay *ngIf="randomTriggered">
-            <c-card-body >
-                <h5 cCardTitle style="color: black;">{{cardValues.name3}}</h5>
-                <p cCardText *ngIf="cardValues.participants3==0;">
-                    Unrated
+            <c-card-body (click)="cardClick(3)">
+                <h6 cCardTitle style="color: black;">{{cardValues.name3}}</h6>
+                <br>
+                <p cCardText *ngIf="cardValues.feedback3==0;">
+                    Unrated <br><br>
+                </p>
+                <p cCardText *ngIf="cardValues.feedback3>0;">
+                    Number of stars: <br>
+                    <ng-container *ngFor="let _ of [].constructor(cardValues.feedback3)"><fa-icon [icon]="faStar" style="color:greenyellow"></fa-icon></ng-container>
                 </p>
                 <p cCardText *ngIf="cardValues.participants3>0;">
-                    Number of stars:
-                </p>
-                <p cCardText *ngIf="cardValues.participants3>0;">
-                    Total past partipants: {{cardValues.participants3}} <br>
+                    Max partipants: {{cardValues.participants3}} <br>
                 </p>
                 <p cCardText *ngIf="cardValues.participants3==0;" style="font-family: Impact">
                     New Event!!!! <br>
@@ -84,7 +94,7 @@
                     Cost of Event($): {{cardValues.cost3}}<br>
                 </p>
                 <p cCardText *ngIf="cardValues.cost3==0;">
-                    Cost of Event($): Free<br>
+                    Cost of Event($): Free<svg cIcon name="cilStar" style="color:aqua"></svg><br>
                 </p>
                 <p cCardText>
                     Number of points: {{cardValues.participants3}} <br>
@@ -93,11 +103,13 @@
         </c-card-img-overlay>
     </c-card>
 </c-col>
+<!--*ngIf="randomTriggered"-->
 </c-row>
-<label class="position-absolute top-72 end-47" style="font-family:Franklin Gothic Medium;font-size:20px">Availability:</label>
-<label class="position-absolute top-77 end-57" style="font-family:'Segoe UI';font-size:20px">From</label>
-<label class="position-absolute top-77 end-416" style="font-family:'Segoe UI';font-size:20px">To</label>
-<input type="date" [min]="minFromDate" [(ngModel)]="minFromDate" (change)="valueChange()"  [disabled]="randomTriggered" class="position-absolute top-82 end-53" />
-<input type="date" [min]="minToDate" [(ngModel)]="minToDate" [disabled]="randomTriggered" class="position-absolute top-82 end-37" />
-<button cButton color="primary" size="lg" (click)="onRandomize()" class="position-absolute top-90 end-46 rounded-pill" *ngIf="!randomTriggered">Randomize</button>
-<button cButton *ngIf="randomTriggered" (click)="onRefresh()" size="sm" class="position-absolute top-11 end-10 rounded-0 btn-outline-light" style="width: 63px;height: 30px;text-align:center;line-height:1em;background-color:	#C0C0C0;border-color:grey;font-size:13px;color:#2E2E2E;outline:none">Refresh</button>
+<!--<label class="position-relative start-45" style="font-family:Franklin Gothic Medium;font-size:20px">Availability:</label>-->
+<!--<label class="position-relative" style="font-family:'Segoe UI';font-size:20px">From</label>
+<label class="position-relative" style="font-family:'Segoe UI';font-size:20px">To</label>-->
+<!--<input type="date" [min]="minFromDate" [(ngModel)]="minFromDate" (change)="valueChange()"  [disabled]="randomTriggered" class="position-relative top-82 end-53" />
+<input type="date" [min]="minToDate" [(ngModel)]="minToDate" [disabled]="randomTriggered" class="position-relative top-82 end-37" />-->
+<br>
+<button cButton color="primary" size="lg" (click)="onRandomize()" class="position-relative start-42 rounded-pill" *ngIf="!randomTriggered">Randomize</button>
+</div>
