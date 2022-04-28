@@ -13,6 +13,13 @@ export class EventDetailComponent implements OnInit {
   eventID: string;
   currentEvent: Event;
 
+  registrationStatus: string = constants.registrationStatusNew;
+  showRegisterButton: Boolean = (this.registrationStatus == constants.registrationStatusNew); 
+  showPaymentButton: Boolean = (this.registrationStatus == constants.registrationStatusRegistered); 
+  showFeedbackButton: Boolean = (this.registrationStatus == constants.registrationStatusComplete); 
+  showCancelButton: Boolean = ((this.registrationStatus == constants.registrationStatusRegistered) ||
+                                 (this.registrationStatus == constants.registrationStatusPaid)); 
+
   constructor(private route: ActivatedRoute, private eventService : EventService) { 
     this.route.queryParams.subscribe(params => {
         this.eventID = params['eventID'];
@@ -25,5 +32,21 @@ export class EventDetailComponent implements OnInit {
       this.currentEvent = data;
       console.log(this.currentEvent);
     });
+  }
+
+  registerEvent(): void {
+    console.log("register");
+  }
+
+  cancelEvent(): void {
+    console.log("cancel");
+  }
+
+  writeFeedback(): void {
+    console.log("writing feedback");
+  }
+
+  makePayment(): void {
+    console.log("making payment");
   }
 }
