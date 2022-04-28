@@ -53,7 +53,7 @@ export class RewardShopComponent implements OnInit {
 
   balanceAmount: any;
 
-  REWARD_ITEM: REWARD_ITEM[] = REWARD_ITEM_TEST;
+  REWARD_ITEM: any;
 
   rewardItemView : RewardItemView[];
 
@@ -63,26 +63,22 @@ export class RewardShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.balanceAmount = 54;
-
-    this.service.getAllRewards().then(
-      (res:any) => {
-        console.log(res[0].itemName);
-  
-        this.REWARD_ITEM[0].ITEM_NAME = res[0].itemName;
-
+    this.service.getAllRewards().subscribe((res) => {
+        console.log(res);
+        this.REWARD_ITEM = res;
       }
     );
 
   }
   onRetrieveButtonClick(optionChosen: number): void {
-    let UserConfirmationVar = confirm("Are you sure you want to claim the prize: " + REWARD_ITEM_TEST[optionChosen- 1].ITEM_NAME);
+    let UserConfirmationVar = confirm("Are you sure you want to claim the prize: " + this.REWARD_ITEM[optionChosen- 1].itemName);
     if(UserConfirmationVar == true){
-      if(this.balanceAmount < REWARD_ITEM_TEST[optionChosen- 1].REWARD_POINT_NEEDED){
+      if(this.balanceAmount < this.REWARD_ITEM[optionChosen- 1].rewardPointNeeded){
         alert("Insufficient balance to claim the prize");
       }
-      else if(REWARD_ITEM_TEST[optionChosen - 1].AMOUNT_LEFT > 0){
-        REWARD_ITEM_TEST[optionChosen- 1].AMOUNT_LEFT -= 1;
-        this.balanceAmount -= REWARD_ITEM_TEST[optionChosen- 1].REWARD_POINT_NEEDED;
+      else if(this.REWARD_ITEM[optionChosen - 1].amountLeft > 0){
+        this.REWARD_ITEM[optionChosen- 1].amountLeft -= 1;
+        this.balanceAmount -= this.REWARD_ITEM[optionChosen- 1].rewardPointNeeded;
         alert("you have successfully claimed the prize");
       }
       else {

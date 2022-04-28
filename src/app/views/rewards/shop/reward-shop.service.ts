@@ -24,13 +24,11 @@ export class RewardShopService {
   }
 
   public getAllRewards(): any {
-    return new Promise((resolve) =>{
-      this.http.get(this.getAllRewardsUrl).pipe().subscribe(data => {
-
-        resolve(data);
-      
-      });
-    });
+      return this.http.get(this.getAllRewardsUrl);
   }
+
+  /*saveTopUp(detail: PaymentDTO) {
+    return this.httpClient.post<PaymentDTO>(this.TOP_UP_URL, detail).subscribe((val)=>{console.log(val)},response=>{console.log(response);});
+  }*/
   
 }
