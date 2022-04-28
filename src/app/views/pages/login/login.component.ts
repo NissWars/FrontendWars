@@ -20,7 +20,7 @@ export class LoginComponent {
   customStylesValidated = false
   email: any;
   pw: any;
-  detail: LoginDTO;
+  detail: LoginDTO = {};
   valid: Boolean;
 
   constructor(private loginService: LoginService, private router: Router) {
@@ -29,18 +29,14 @@ export class LoginComponent {
     }
 
   saveLogin() {
-    this.customStylesValidated = true;
-    this.detail.email= this.email;
-    this.detail.pw = this.pw;
-
-
     console.log('login...');
     console.log(this.email);
     console.log(this.pw);
-
-    
-
-
+    this.customStylesValidated = true;
+    this.detail.email= this.email;
+    this.detail.pw = this.pw;
+    console.log(this.detail.email);
+    console.log(this.detail.pw);
 
     //service 
     this.loginService.saveLogin(this.detail).subscribe((val:any)=>{

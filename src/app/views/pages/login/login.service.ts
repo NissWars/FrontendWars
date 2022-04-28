@@ -28,7 +28,7 @@ export class LoginService {
   
   saveLogin(detail: LoginDTO) {
     console.log(detail);
-    return this.httpClient.post<LoginDTO>(this.LOGIN_URL, detail);
+    return this.httpClient.post<LoginDTO>(this.LOGIN_URL+'?email='+detail.email+'&pw='+detail.pw,detail);
   }
 
 }
