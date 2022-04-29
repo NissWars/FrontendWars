@@ -9,6 +9,8 @@ import { Router, RouterLink } from '@angular/router';
 export interface LoginDTO{
   email?: any;
   pw?: any;
+  custId?: any;
+  login: boolean;
 }
 
 @Component({
@@ -20,8 +22,7 @@ export class LoginComponent {
   customStylesValidated = false
   email: any;
   pw: any;
-  detail: LoginDTO = {};
-  valid: Boolean;
+  detail: LoginDTO = {login:false};
 
   constructor(private loginService: LoginService, private router: Router) {
 
@@ -35,21 +36,16 @@ export class LoginComponent {
     this.customStylesValidated = true;
     this.detail.email= this.email;
     this.detail.pw = this.pw;
-    console.log(this.detail.email);
-    console.log(this.detail.pw);
 
     //service 
     this.loginService.saveLogin(this.detail).subscribe((val:any)=>{
-      if (val == true){
-        this.valid = true
-      }else{this.valid = false}
-
-
-      if (this.valid == true){
-        this.router.navigate(['/randomizer'])
+      this.detail = val;
+      if (this.detail.login == true){
+        sessionStorage.setItem('custId',this.detail.custId);
+        this.router.navigate(['/randomizer']);
       }
       else{
-        alert('Incorrect Email or Password')
+        alert('Incorrect Email or Password');
       }
 
 

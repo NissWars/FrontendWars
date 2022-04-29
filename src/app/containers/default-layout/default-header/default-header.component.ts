@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
 
@@ -14,12 +15,15 @@ export class DefaultHeaderComponent extends HeaderComponent {
   public newMessages = new Array(4)
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
-
-  testUserID: string = "20220420000000000000";
-  currentUserID: string;
-
-  constructor(private classToggler: ClassToggleService) {
+  eventId: any;
+  panelId: any;
+  constructor(private classToggler: ClassToggleService,private route: Router) {
     super();
-    this.currentUserID = this.testUserID;
+  }
+  routeEvent(): void {
+    this.route.navigateByUrl("/event/detail?eventId="+sessionStorage.getItem('eventId'));
+  }
+  onPanel(test:any){
+    this.panelId=test;
   }
 }

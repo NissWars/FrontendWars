@@ -19,11 +19,11 @@ export class LoginService {
   }
 
   public sendGetAllCustomers(){
-    return this.httpClient.get("http://localhost:8080/customers/all");
+    return this.httpClient.get(this.REST_API_SERVER+"/customers/all");
   }
 
   public sendGet1Customer(id: String){
-    return this.httpClient.get("http://localhost:8080/customers/find/" + id);
+    return this.httpClient.get(this.REST_API_SERVER+"/customers/find/" + id);
   }
   
   saveLogin(detail: LoginDTO) {

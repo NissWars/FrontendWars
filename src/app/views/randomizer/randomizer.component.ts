@@ -10,15 +10,18 @@ interface cardValues{
   cost1?: any;
   participants1?: any;
   name1?: any;
+  eventId1?: any;
   feedback1?: any;
   cost2?: any;
   participants2?: any;
   name2?: any;
+  eventId2?: any;
   feedback2?: any;
   cost3?: any;
   participants3?: any;
   name3?: any;
   feedback3?: any;
+  eventId3?: any;
 }
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +45,7 @@ export class RandomizerComponent implements OnInit {
   ngOnInit(): void {
     this.randomTriggered=false;
     if(sessionStorage.getItem('randomize')!="1"){
-      this.randomizerService.sendGetAllTags("1").subscribe(
+      this.randomizerService.sendGetAllTags(sessionStorage.getItem('custId')).subscribe(
         (data: any)=>{console.log(data);this.eventList=data;}) 
     }
   }
@@ -64,6 +67,7 @@ export class RandomizerComponent implements OnInit {
       this.cardValues.participants1=this.eventList[this.navigator].maximumPax;
       this.cardValues.name1=this.eventList[this.navigator].eventName;
       this.cardValues.feedback1=Number(this.eventList[this.navigator].rating);
+      this.cardValues.eventId1=this.eventList[this.navigator].eventID;
       this.navigator++;
     }
     if(this.navigator<this.eventList.length){
@@ -71,6 +75,7 @@ export class RandomizerComponent implements OnInit {
       this.cardValues.participants2=this.eventList[this.navigator].maximumPax;
       this.cardValues.name2=this.eventList[this.navigator].eventName;
       this.cardValues.feedback2=Number(this.eventList[this.navigator].rating);
+      this.cardValues.eventId2=this.eventList[this.navigator].eventID;
       this.navigator++;
     }
     if(this.navigator<this.eventList.length){
@@ -78,30 +83,34 @@ export class RandomizerComponent implements OnInit {
       this.cardValues.participants3=this.eventList[this.navigator].maximumPax;
       this.cardValues.name3=this.eventList[this.navigator].eventName;
       this.cardValues.feedback3=Number(this.eventList[this.navigator].rating);
+      this.cardValues.eventId3=this.eventList[this.navigator].eventID;
       this.navigator++;
     }
   }
   randomizeFunctionality(){
     console.log(this.eventList);
     if(this.navigator<this.eventList.length){
-      this.cardValues.cost1=(this.eventList[this.navigator].price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+      this.cardValues.cost1=this.eventList[this.navigator].price;
       this.cardValues.participants1=this.eventList[this.navigator].maximumPax;
       this.cardValues.name1=this.eventList[this.navigator].eventName;
-      this.cardValues.feedback1=this.eventList[this.navigator].rating;
+      this.cardValues.feedback1=Number(this.eventList[this.navigator].rating);
+      this.cardValues.eventId1=this.eventList[this.navigator].eventID;
       this.navigator++;
     }
     if(this.navigator<this.eventList.length){
-      this.cardValues.cost2=(this.eventList[this.navigator].price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+      this.cardValues.cost2=this.eventList[this.navigator].price;
       this.cardValues.participants2=this.eventList[this.navigator].maximumPax;
       this.cardValues.name2=this.eventList[this.navigator].eventName;
-      this.cardValues.feedback2=this.eventList[this.navigator].rating;
+      this.cardValues.feedback2=Number(this.eventList[this.navigator].rating);
+      this.cardValues.eventId2=this.eventList[this.navigator].eventID;
       this.navigator++;
     }
     if(this.navigator<this.eventList.length){
-      this.cardValues.cost3=(this.eventList[this.navigator].price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+      this.cardValues.cost3=this.eventList[this.navigator].price;
       this.cardValues.participants3=this.eventList[this.navigator].maximumPax;
       this.cardValues.name3=this.eventList[this.navigator].eventName;
-      this.cardValues.feedback3=this.eventList[this.navigator].rating;
+      this.cardValues.feedback3=Number(this.eventList[this.navigator].rating);
+      this.cardValues.eventId3=this.eventList[this.navigator].eventID;
       this.navigator++;
     }
     this.randomTriggered=true;
@@ -110,9 +119,9 @@ export class RandomizerComponent implements OnInit {
   }
   cardClick(num: Number){
     switch(num){
-      case 1: console.log(1);sessionStorage.setItem('randomize','1');break;
-      case 2: console.log(2);sessionStorage.setItem('randomize','2');break;
-      case 3: console.log(3);sessionStorage.setItem('randomize','3');break;
+      case 1: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId1);sessionStorage.setItem('randomize','1');sessionStorage.setItem('eventId',this.cardValues.eventId1);break;
+      case 2: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId2);sessionStorage.setItem('randomize','2');sessionStorage.setItem('eventId',this.cardValues.eventId1);break;
+      case 3: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId3);sessionStorage.setItem('randomize','3');sessionStorage.setItem('eventId',this.cardValues.eventId1);break;
       default: break;
     }
   }
