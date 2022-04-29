@@ -20,7 +20,7 @@ export class LoginComponent {
   customStylesValidated = false
   email: any;
   pw: any;
-  detail: LoginDTO;
+  detail: LoginDTO ={};
   valid: Boolean;
 
   constructor(private loginService: LoginService, private router: Router) {
