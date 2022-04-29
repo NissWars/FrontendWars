@@ -36,10 +36,10 @@ export class EventDetailComponent implements OnInit {
       console.log(data);
       this.registrationStatus = this.currentEvent.currentUserRegistrationStatus;
 
-      this.showRegisterButton = true;//(this.registrationStatus == constants.registrationStatus.NEW); 
-      this.showPaymentButton= true;//(this.registrationStatus == constants.registrationStatus.REGISTERED); (this.registrationStatus == constants.registrationStatus.EVENT_FINISHED); 
-      this.showCancelButton = true;//((this.registrationStatus == constants.registrationStatus.REGISTERED) ||
-                                    //(this.registrationStatus == constants.registrationStatus.PAID)); 
+      this.showRegisterButton = (this.registrationStatus == constants.registrationStatus.NEW); 
+      this.showPaymentButton = (this.registrationStatus == constants.registrationStatus.REGISTERED); (this.registrationStatus == constants.registrationStatus.EVENT_FINISHED); 
+      this.showCancelButton = ((this.registrationStatus == constants.registrationStatus.REGISTERED) ||
+                                    (this.registrationStatus == constants.registrationStatus.PAID)); 
       console.log(this.currentEvent);
     });
   }
@@ -57,13 +57,21 @@ export class EventDetailComponent implements OnInit {
 
   writeFeedback(): void {
     console.log("writing feedback");
-    this.router.navigateByUrl("/feedback");
+    this.router.navigate(["feedback"], 
+        {queryParams: {
+            eventID: this.currentEvent.eventID,
+            eventSerialNumber: this.currentEvent.eventSerialNumber
+          }});
   }
 
   makePayment(): void {
     this.showFeedbackButton=true;
     console.log("making payment");
     alert("Payment Successful");
+  }
+
+  viewFeedbacks(): void {
+    this.router.navigate(['viewfeedback'], {queryParams: {eventID: this.currentEvent.eventSerialNumber}});
   }
 
   goback(): void {

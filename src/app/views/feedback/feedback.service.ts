@@ -33,6 +33,8 @@ export class feedBackService {
     console.log(detail.get('comment'));
     console.log(detail.get('rating'));
     console.log(detail.get('image'));
+    console.log(detail.get('eventID'));
+    console.log(detail.get('eventSerialNumber'));
 
     return this.http.post<FormData>(`${this.saveFeedBackUrl}`, detail, { observe: 'response' });
   }

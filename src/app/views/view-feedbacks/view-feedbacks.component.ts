@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 import { viewFeedBacksService } from './view-feedbacks.service' ;
 import { FeedBackView} from './view-feedbacks.model';
 
@@ -18,17 +19,21 @@ export class ViewFeedbacksComponent implements OnInit {
 
   
 
-  constructor(private viewFeedBacksService : viewFeedBacksService) { }
+  constructor(private viewFeedBacksService : viewFeedBacksService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params.hasOwnProperty("eventID")) {
+        this.eventID = params["eventID"];
+      }
+    });
+
     if (this.inData != null) {
       this.eventID = this.inData;
       console.log(this.eventID);
     }
 
     this.loadPage();
-    
-    
   }
 
   loadPage(){
