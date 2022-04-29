@@ -1,12 +1,19 @@
-<div class="list-container" *ngFor="let event of resultEventList">
+<div class="container card card1" *ngFor="let event of resultEventList">
     <div class = "row">
         <div class = "col">
             <a [routerLink]="['/event/detail']" [queryParams]="{eventID: event.eventID}">{{event.eventName}}</a>
+            <div> <!--for tags-->
+                <span *ngFor="let tag of event.eventTags" class="badge1">
+                    <span class = "badge bg-primary">{{tag.tagName}}</span>
+                </span>
+            </div>
         </div>
         <div class = "col"> <!--conditional buttons-->
         </div>
     </div>
     <div> <!--event details-->
-        
+        <div>
+            <span>Event Start Time: {{event.startTime}}</span>
+        </div>
     </div>
 </div>

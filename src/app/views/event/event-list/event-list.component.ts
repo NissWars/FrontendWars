@@ -9,7 +9,7 @@ import { EventService } from '../event.service';
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss']
+  styleUrls: ['./event-list.component.scss', '../event.scss']
 })
 export class EventListComponent implements OnInit {
   testUserID: string = "20220420000000000000";

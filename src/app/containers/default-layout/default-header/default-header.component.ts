@@ -15,7 +15,11 @@ export class DefaultHeaderComponent extends HeaderComponent {
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
 
+  testUserID: string = "20220420000000000000";
+  currentUserID: string;
+
   constructor(private classToggler: ClassToggleService) {
     super();
+    this.currentUserID = this.testUserID;
   }
 }
