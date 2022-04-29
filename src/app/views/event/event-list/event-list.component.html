@@ -1,1 +1,12 @@
-<p>event-list works!</p>
+<div class="list-container" *ngFor="let event of resultEventList">
+    <div class = "row">
+        <div class = "col">
+            <a [routerLink]="['/event/detail']" [queryParams]="{eventID: event.eventID}">{{event.eventName}}</a>
+        </div>
+        <div class = "col"> <!--conditional buttons-->
+        </div>
+    </div>
+    <div> <!--event details-->
+        
+    </div>
+</div>
