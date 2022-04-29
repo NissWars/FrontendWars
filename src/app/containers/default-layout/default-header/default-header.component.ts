@@ -21,7 +21,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
     super();
   }
   routeEvent(): void {
-    this.route.navigateByUrl("/event/detail?eventId="+sessionStorage.getItem('eventId'));
+    this.route.navigateByUrl("/event/list?customerID="+sessionStorage.getItem('custId'));
   }
   onPanel(test:any){
     this.panelId=test;
