@@ -71,6 +71,7 @@ export class FeedbackComponent implements OnInit {
         if(action === 'yes') {
           this.service.saveFeedBack(this.fd).subscribe(resp => {
             this.handleSuccessMessage('Record has been updated successfully');
+              window.history.back();
           });
         }
       }, () => {});
@@ -112,7 +113,7 @@ export class FeedbackComponent implements OnInit {
       successModal.componentInstance.alertType = 'alert-success';
       successModal.componentInstance.content = message;
       successModal.result.then((success) => {
-        window.location.reload();
+        //this.router.navigateByUrl('/rewardShop');
       }, (error) =>{ window.location.reload();})
     }
   
