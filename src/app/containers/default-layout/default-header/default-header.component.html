@@ -22,7 +22,7 @@
           </a>
         </c-nav-item>
         <c-nav-item>
-          <a [cTabContent]="tabContent1" routerLink="./" [tabPaneIdx]="2" cNavLink>
+          <a [cTabContent]="tabContent1" routerLink="./event/list" [queryParams]="{customerID: currentUserID}" [tabPaneIdx]="2" cNavLink>
             <svg cIcon class="me-2" name="cilCode"></svg>
             Event History
           </a>

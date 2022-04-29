@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import * as constants from '../../../classes/constants';
 import { Event } from '../../../classes/event';
 import { EventService } from '../event.service';
@@ -20,7 +21,7 @@ export class EventDetailComponent implements OnInit {
   showFeedbackButton: Boolean;
   showCancelButton: Boolean;
 
-  constructor(private route: ActivatedRoute, private eventService : EventService) {
+  constructor(private route: ActivatedRoute, private eventService : EventService, private _location: Location) {
     this.route.queryParams.subscribe(params => {
         this.eventID = params['eventID'];
       }
@@ -58,5 +59,9 @@ export class EventDetailComponent implements OnInit {
 
   makePayment(): void {
     console.log("making payment");
+  }
+
+  goback(): void {
+    this._location.back();
   }
 }
