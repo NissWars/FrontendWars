@@ -39,23 +39,23 @@ export class RandomizerComponent implements OnInit {
   navigator: number=0;
   eventList: any;
   rating: any;
+  custId: any;
 
   constructor(private randomizerService: RandomizerService, private router: Router) { 
   }
   ngOnInit(): void {
     this.randomTriggered=false;
-    if(sessionStorage.getItem('randomize')!="1"){
-      this.randomizerService.sendGetAllTags(sessionStorage.getItem('custId')).subscribe(
-        (data: any)=>{console.log(data);this.eventList=data;}) 
-    }
+    this.custId=sessionStorage.getItem('custID');
+      this.randomizerService.sendGetAllTags(this.custId).subscribe(
+        (data: any)=>{console.log(data);this.eventList=data;}) ;
   }
 
   onRandomize(){
-    if(sessionStorage.getItem('randomize')){
+    //if(sessionStorage.getItem('randomize')){
       alert('Event already chosen');
-    }else{
+    //}else{
       this.randomizeFunctionality();
-    }
+    //}
   }
   onRefresh(){
     if(this.navigator>=this.eventList.length)
@@ -118,10 +118,13 @@ export class RandomizerComponent implements OnInit {
     this.ranButStyle = this.ranButStyle + "visibility: hidden;display: none";
   }
   cardClick(num: Number){
+    console.log(this.custId);
+    sessionStorage.setItem('custId',this.custId);
+    console.log(sessionStorage.getItem('custId'));
     switch(num){
-      case 1: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId1);sessionStorage.setItem('randomize','1');sessionStorage.setItem('eventId',this.cardValues.eventId1);break;
-      case 2: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId2);sessionStorage.setItem('randomize','2');sessionStorage.setItem('eventId',this.cardValues.eventId1);break;
-      case 3: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId3);sessionStorage.setItem('randomize','3');sessionStorage.setItem('eventId',this.cardValues.eventId1);break;
+      case 1: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId1);break;
+      case 2: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId2);;break;
+      case 3: this.router.navigateByUrl("/event/detail?eventID="+this.cardValues.eventId3);;break;
       default: break;
     }
   }

@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { cilArrowBottom, cilArrowTop } from '@coreui/icons';
 import { WalletService } from './wallet.service';
 import { DatePipe } from '@angular/common'
 import { stringify } from '@angular/compiler/src/util';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule,MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { map } from 'rxjs/internal/operators/map';
+import { Location } from '@angular/common';
 
-export interface PaymentDTO{
+export interface HistoryDTO{
   custId?:String;
-  topUpAmount?:String;
+  topUpAmount?:any;
   paymentMethodDesc?:String;
+  eventID?:String;
+  verify?:any;
 }
 @Component({
   selector: 'app-wallet',
@@ -16,106 +23,63 @@ export interface PaymentDTO{
   styleUrls: ['./wallet.component.scss']
 })
 
-export class WalletComponent implements OnInit {
+export class WalletComponent implements OnInit,AfterViewInit {
   constructor(private walletService: WalletService, private router: Router) {
+    this.datasource = new MatTableDataSource();
   }
-  icons = { cilArrowBottom, cilArrowTop };
-  iconType: string = "cilArrowBottom";
-  currPage: number = 1;
-  maxPage: number = 10;
-  disableNext: boolean = false;
-  disablePrev: boolean = false;
-  usersData: any;
-  asc: String = "1";
-  col: String = "1";
-  curCol: String ="1";
+  usersData: any = {"topUpHistoryID":"a","creationDateTime" :"","topUpAmount":"1","paymentMethodDesc":"none"};
+  datasource: MatTableDataSource<any>;
+  displayedColumns: string[] = ['creationDateTime','topUpHistoryID','paymentMethodDesc','topUpAmount'];
   balance: number = 0.0;
   paymentType: any = ["GRAB PAY","APPLE PAY","VISA", "MASTERCARD"];
   currPayment: any = "GRAB PAY";
   creditCard: any;
+  custID: String = "0";
   amount: Number = 0;
-  paymentdto: PaymentDTO={};
+  paymentdto: HistoryDTO={};
+  subscription;
 
-  datepipe: DatePipe = new DatePipe('en-US')
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit(): void {
-    this.walletService.sendGetPaginateRecords("0", ((this.currPage - 1) * 10).toString(), "1", "1").subscribe(
+  }
+  ngAfterViewInit(): void {
+    this.custID = sessionStorage.getItem('custID');
+    this.walletService.sendGetPaginateRecords(this.custID).subscribe(
       (data: any) => {
-        this.usersData = data;
+        this.datasource = new MatTableDataSource(data);
+        this.datasource.paginator=this.paginator;
+        this.datasource.sort = this.sort;
       });
-    this.walletService.sendGetCount("0").subscribe(
-      (data: any) => {
-        if(data%10==0){
-          this.maxPage= data/10;
-        }else{
-          this.maxPage= Math.round(data/10);
+      this.walletService.sendGetBalance(this.custID).subscribe(
+        (data:any)=>{
+          this.balance = data.balance;
+          console.log(data);
         }
-      });
-    this.walletService.sendGetBalance("0").subscribe(
-      (data: any) => {
-        this.balance = roundTo(data,2);
-      });
-  }
-
-  onClickNext() {
-    this.currPage = this.currPage + 1;
-    console.log("clicked");
-    if (this.currPage == this.maxPage) {
-      this.disableNext = true;
-    }
-    this.updateTable();
-    this.disablePrev = false;
-  }
-  onClickPrev() {
-    this.currPage = this.currPage - 1;
-    console.log("clicked");
-    if (this.currPage == 1) {
-      this.disablePrev = true;
-    }
-    this.updateTable();
-    this.disableNext = false;
-  }
-  updateTable() {
-    this.usersData=[];
-    this.walletService.sendGetPaginateRecords("0", ((this.currPage - 1) * 10).toString(), this.col, this.asc).subscribe(
-      (data: any) => {
-        console.log(data);
-        console.log(this.currPage);
-        this.usersData = data;
-      });
-  }
-
-  onSort(col: Number) {
-    if(this.col!=this.curCol){
-      this.currPage = 1;
-      this.disablePrev = true;
-      this.disableNext = false;
-    }
-    this.col = col.toString();
-    if (this.iconType == "cilArrowBottom") {
-      this.iconType = "cilArrowTop";
-      this.asc = "1";
-    } else {
-      this.iconType = "cilArrowBottom";
-      this.asc = "2";
-    }
-    this.updateTable();
+      );
+    this.datasource.sort = this.sort;
+    this.datasource.paginator=this.paginator;
   }
   onSelect(){
     console.log(this.currPayment);
   }
   onTopUp(){
-    this.paymentdto.topUpAmount=this.amount.toFixed(2).toString();
-    this.paymentdto.custId="20220420000000000000";
+    this.paymentdto.topUpAmount=this.amount.toFixed(2);
+    this.paymentdto.custId=this.custID
     this.paymentdto.paymentMethodDesc=this.currPayment;
     if((this.currPayment==this.paymentType[2]|| this.currPayment==this.paymentType[3]) && (this.creditCard.toString().length!=19))
     {
       alert("Invalid Credit Card Number");
       return;
     }
-    this.walletService.saveTopUp(this.paymentdto);
-    this.onSort(1);
-    console.log("send");
+    if(this.paymentdto.topUpAmount<=0)
+    {
+      alert("Top Up Amount is Invalid")
+    }else{
+      this.walletService.saveTopUp(this.paymentdto).subscribe((val)=>{location.reload();});
+    }
+
   }
 }
 function roundTo(num: number, places: number): number {

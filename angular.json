@@ -32,8 +32,7 @@
             "preserveSymlinks": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/views/rewards/shop/images"
+              "src/assets"
             ],
             "styles": [
               "src/scss/styles.scss"
@@ -116,5 +115,5 @@
       }
     }
   },
-  "defaultProject": "Nisswars"
+  "defaultProject": "coreui-free-angular-admin-template"
 }

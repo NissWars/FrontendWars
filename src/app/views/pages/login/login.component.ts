@@ -18,17 +18,16 @@ export interface LoginDTO{
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   customStylesValidated = false
   email: any;
   pw: any;
   detail: LoginDTO = {login:false};
 
   constructor(private loginService: LoginService, private router: Router) {
-
-  
     }
-
+  ngOnInit(): void {
+  }
   saveLogin() {
     console.log('login...');
     console.log(this.email);
@@ -41,8 +40,9 @@ export class LoginComponent {
     this.loginService.saveLogin(this.detail).subscribe((val:any)=>{
       this.detail = val;
       if (this.detail.login == true){
-        sessionStorage.setItem('custId',this.detail.custId);
-        this.router.navigate(['/randomizer']);
+        console.log(sessionStorage.getItem('custID')); 
+        sessionStorage.setItem('custID',this.detail.custId);
+        this.router.navigateByUrl('/randomizer');
       }
       else{
         alert('Incorrect Email or Password');

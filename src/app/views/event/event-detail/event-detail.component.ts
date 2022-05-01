@@ -4,6 +4,15 @@ import { Location } from '@angular/common';
 import * as constants from '../../../classes/constants';
 import { Event } from '../../../classes/event';
 import { EventService } from '../event.service';
+import { SuccessModalComponent } from '../../modal/success-modal.component';
+
+export interface PaymentDTO{
+  custID?:String;
+  paymentMethodDesc?:String;
+  amountPaid?:any;
+  eventID?:String;
+  verify?:boolean;
+}
 
 @Component({
   selector: 'app-event-detail',
@@ -11,9 +20,10 @@ import { EventService } from '../event.service';
   styleUrls: ['./event-detail.component.scss', '../event.scss']
 })
 export class EventDetailComponent implements OnInit {
-  testUserID: string = sessionStorage.getItem('custId');
+  testUserID: string;
   eventID: string;
   currentEvent: Event;
+  paymentDetails: PaymentDTO = {};
 
   registrationStatus: string = constants.registrationStatus.NEW;
   showRegisterButton: Boolean;
@@ -24,13 +34,13 @@ export class EventDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private eventService : EventService, private _location: Location,private router:Router) {
     this.route.queryParams.subscribe(params => {
         this.eventID = params['eventID'];
-    /*this.route.queryParams.subscribe(params =>{
-        this.eventID = params['eventId'];*/
       }
     );
   }
 
   ngOnInit(): void {
+    this.testUserID = sessionStorage.getItem('custID');
+    console.log(this.testUserID);
     this.eventService.getEventDetail(this.eventID).then((data) => {
       this.currentEvent = data;
       console.log(data);
@@ -49,6 +59,7 @@ export class EventDetailComponent implements OnInit {
     this.eventService.registerToEvent(this.eventID, this.testUserID).then((data) => {
       console.log(data);
     });
+    this.showPaymentButton = (this.registrationStatus == constants.registrationStatus.REGISTERED); (this.registrationStatus == constants.registrationStatus.EVENT_FINISHED); 
   }
 
   cancelEvent(): void {
@@ -67,7 +78,23 @@ export class EventDetailComponent implements OnInit {
   makePayment(): void {
     this.showFeedbackButton=true;
     console.log("making payment");
-    alert("Payment Successful");
+    this.paymentDetails.custID=this.testUserID;
+    this.paymentDetails.paymentMethodDesc="Wallet";
+    this.paymentDetails.amountPaid=this.currentEvent.price.toString();
+    this.paymentDetails.eventID=this.currentEvent.eventID;
+    console.log(this.paymentDetails);
+    this.eventService.makePayment(this.paymentDetails).subscribe((val:any)=>{
+      this.paymentDetails = val;
+      console.log(val);
+      if (this.paymentDetails.verify == true){
+        alert('Payment Was Successful');
+      }
+      else{
+        alert('Insufficient Balance');
+        this.router.navigate(['/wallet']);
+      }
+    });
+    this.showPaymentButton = false;
   }
 
   viewFeedbacks(): void {

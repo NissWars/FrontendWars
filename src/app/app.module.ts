@@ -5,11 +5,6 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
-//import {matCardModule} from '@angular/material/card'; //kerrichangedvalidate
-//import {matButtonModule} from '@angular/material/button'; //kerrichangedvalidate
-//import {matInputModule} from '@angular/material/input'; //kerrichangedvalidate
-//import {matIconModule} from '@angular/material/icon'; //kerrichangedvalidate
-//import { RegisterComponent } from './views/pages/register/register.component'; //kerrichangedvalidate
 import { feedBackService } from './views/feedback/feedback.service';
 import { EventService } from './views/event/event.service';
 import { viewFeedBacksService } from './views/view-feedbacks/view-feedbacks.service';
@@ -143,7 +138,7 @@ const APP_CONTAINERS = [
     MessageService,
     viewFeedBacksService,
     HttpErrorHandler,
-    EventService,
+    EventService
   ],
   bootstrap: [AppComponent],
 })

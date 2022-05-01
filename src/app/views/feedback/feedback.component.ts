@@ -30,14 +30,13 @@ export class FeedbackComponent implements OnInit {
       private activatedRoute: ActivatedRoute) { }
   
     ngOnInit(): void {
-      //this.loggedUser = sessionStorage.getItem('loggedUser');
+      this.loggedUser = sessionStorage.getItem('loggedUser');
       this.activatedRoute.queryParams.subscribe(params => {
         if (params.hasOwnProperty("eventID")) {
           this.eventID = params["eventID"];
           this.eventSerialNumber = params["eventSerialNumber"];
         }
       });
-
       this.form = new FormGroup({          
         ratings: new FormControl(null, null),
         comments: new FormControl(null,Validators.required),

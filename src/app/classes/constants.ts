@@ -1,5 +1,6 @@
 export const backendBaseUrl = "http://localhost:8080/";
 export const backendEventUrl = "event/";
+export const backendPaymentUrl = "payment/"
 
 export const DATETIME_FORMAT = "YYYY/MM/DD HH:mm:ss.SSS";
 

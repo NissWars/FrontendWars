@@ -19,61 +19,27 @@
         </table>
     </c-card>
     <hr />
-    <c-card class="mb-4 card">
-        <c-card-header class="card-header" style="font-family: Roboto;font-weight: 900;font-size: larger"
-            align="center">
-            Past Transactions
-        </c-card-header>
-        <table bordered cTable [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable
-            class="mb-0 border">
-            <thead cTableColor="light">
-                <tr>
-                    <th>Id <button style="border-style: none;background-color: white;" (click)="onSort(1)"> <svg cIcon
-                                [name]="iconType"></svg></button></th>
-                    <th>Name <button style="border-style: none;background-color: white;" (click)="onSort(2)"> <svg cIcon
-                                [name]="iconType"></svg></button></th>
-                    <th>Payment Method <button style="border-style: none;background-color: white;" (click)="onSort(3)"> <svg cIcon
-                                [name]="iconType"></svg></button></th>
-                    <th>Amount <button style="border-style: none;background-color: white;" (click)="onSort(4)"> <svg cIcon
-                                [name]="iconType"></svg></button></th>
-                    <th>Date/Time <button style="border-style: none;background-color: white;" (click)="onSort(5)"> <svg
-                                cIcon [name]="iconType"></svg></button></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of usersData; index as i">
-                    <td>
-                        <div>{{ user.topUpHistoryID }}</div>
-                    </td>
-                    <td>
-                        <div>{{ user.custName }}</div>
-                    </td>
-                    <td>
-                        {{ user.paymentMethodDesc }}
-                    </td>
-                    <td>
-                        <div>{{ user.topUpAmount}}</div>
-                    </td>
-                    <td>
-                        <div>{{ user.creationDateTime | date: 'yyyy-MM-dd HH:mm'}}</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <c-pagination aria-label="Page-navigation example" align="end" role="'navigation'">
-            <li cPageItem>
-                <button class="p-2" cPageLink aria-label="Previous" (click)="onClickPrev()"
-                    [disabled]="disablePrev"><span aria-hiddent="true">&laquo;</span></button>
-            </li>
-            <li cPageItem>
-                <div class="p-2 border">Page {{currPage}} of {{maxPage}}</div>
-            </li>
-            <li cPageItem>
-                <button class="p-2" cPageLink aria-label="Next" (click)="onClickNext()" [disabled]="disableNext"><span
-                        aria-hidden="true">&raquo;</span></button>
-            </li>
-        </c-pagination>
-    </c-card>
+    <table mat-table [dataSource]="datasource" matSort matSortActive="creationDateTime" matSortDirection="desc">
+        <ng-container matColumnDef="creationDateTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date/Time</th>
+            <td mat-cell *matCellDef="let user">{{user.creationDateTime|date: 'dd MMM yyyy h:mm:ss a'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="topUpHistoryID">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by TransactionId">Transaction Id</th>
+            <td mat-cell *matCellDef="let user">{{user.topUpHistoryID}}</td>
+        </ng-container>
+        <ng-container matColumnDef="paymentMethodDesc">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Payment Method</th>
+            <td mat-cell *matCellDef="let user">{{user.paymentMethodDesc}}</td>
+        </ng-container>
+        <ng-container matColumnDef="topUpAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+            <td mat-cell *matCellDef="let user">{{user.topUpAmount|number:'1.2-2'}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5,10,25,100]" aria-label="Select page of Transaction"></mat-paginator>
 </div>
 
 

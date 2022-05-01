@@ -79,6 +79,7 @@ export class RewardShopComponent implements OnInit {
       else if(this.REWARD_ITEM[optionChosen - 1].amountLeft > 0){
         this.REWARD_ITEM[optionChosen- 1].amountLeft -= 1;
         this.balanceAmount -= this.REWARD_ITEM[optionChosen- 1].rewardPointNeeded;
+        
         alert("you have successfully claimed the prize");
       }
       else {

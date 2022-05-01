@@ -19,6 +19,7 @@ export class EventListComponent implements OnInit {
 
   ngOnInit(): void {
     let queryParams = new HttpParams();
+    this.testUserID=sessionStorage.getItem('custId');
     queryParams = queryParams.append("customerID", this.testUserID);
 
     this.eventService.getEventListByParam(queryParams).then((data) => {
