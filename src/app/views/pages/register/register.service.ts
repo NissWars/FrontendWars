@@ -18,11 +18,11 @@ export class RegisterService {
   }
 
   public sendGetAllCustomers(){
-    return this.httpClient.get("http://localhost:8080/customers/all");
+    return this.httpClient.get(this.REST_API_SERVER+"/customers/all");
   }
 
   public sendGet1Customer(Id: String){
-    return this.httpClient.get("http://localhost:8080/customers/find/" + Id);
+    return this.httpClient.get(this.REST_API_SERVER+"/customers/find/" + Id);
   }
 
   saveSubmit(detail: RegisterDTO) {

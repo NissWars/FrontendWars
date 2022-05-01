@@ -2,20 +2,20 @@ import { R3FactoryDelegateType } from '@angular/compiler/src/render3/r3_factory'
 import { AfterViewInit, Component, OnInit,ChangeDetectionStrategy } from '@angular/core';
 import { AnyForUntypedForms } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RewardShopService } from './reward-shop.service';
+import { RewardDto, RewardShopService } from './reward-shop.service';
 import { RewardItemView } from './reward-shop.model';
 
 interface REWARD_ITEM {
-  REWARD_ITEM_ID: string;
-  AMOUNT_LEFT: any;
-  REWARD_POINT_NEEDED: any;
-  ITEM_NAME: string;
-  DESCRIPTION: string;
-  REDEMPTION_DEADLINE: any;
-  CREATION_DATETIME: Date;
-  CREATION_USER: string;
-  LAST_UPDATE_DATETIME: Date;
-  LAST_UPDATE_USER: string;
+  rewardItemID?: string;
+  amountLeft?: any;
+  rewardPointNeeded?: any;
+  itemName?: string;
+  description?: string;
+  redemptionDeadline?: any;
+  CREATION_DATETIME?: Date;
+  CREATION_USER?: string;
+  LAST_UPDATE_DATETIME?: Date;
+  LAST_UPDATE_USER?: string;
 };
 
 var REWARD_ITEM_TEST =[
@@ -50,7 +50,7 @@ export class RewardShopComponent implements OnInit {
   now: Date = new Date();
   minFromDate!: string;
   minToDate: any;
-
+  rewardDto: RewardDto={};
   balanceAmount: any;
 
   REWARD_ITEM: any;
@@ -79,7 +79,12 @@ export class RewardShopComponent implements OnInit {
       else if(this.REWARD_ITEM[optionChosen - 1].amountLeft > 0){
         this.REWARD_ITEM[optionChosen- 1].amountLeft -= 1;
         this.balanceAmount -= this.REWARD_ITEM[optionChosen- 1].rewardPointNeeded;
-        
+        this.rewardDto.points=this.balanceAmount;
+        this.rewardDto.custId=sessionStorage.getItem('custID');
+        this.rewardDto.itemId=this.REWARD_ITEM[optionChosen- 1].rewardItemID;
+        this.service.rewardUpdate(this.rewardDto).subscribe(
+          (data:any)=>{console.log(data);
+          location.reload();});
         alert("you have successfully claimed the prize");
       }
       else {

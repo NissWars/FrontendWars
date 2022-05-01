@@ -16,6 +16,11 @@ export interface RegisterDTO{
   email?: any;
   pw?: any;
   pw2?: any;
+  preference1?:any;
+  preference2?:any;
+  preference3?:any;
+  preference4?:any;
+  preference5?:any;
 }
 
 @Component({

@@ -61,7 +61,13 @@ export class RandomizerComponent implements OnInit,AfterViewInit {
       });
   }
   onRandomize(){
-    this.randomizeFunctionality();
+    console.log(this.eventList.length)
+    if(this.eventList.length==0)
+    {
+      alert("No Events available");
+    } else {
+      this.randomizeFunctionality();
+    }
   }
   onRefresh(){
     if(this.navigator>=this.eventList.length)
