@@ -34,6 +34,10 @@ export class RewardShopService {
       return this.http.get(this.getAllRewardsUrl);
   }
 
+  public getCustomer(Id: String): any {
+    return this.http.get("http://localhost:8080/customers/find/" + Id);
+}
+
   public rewardUpdate(rewardDto: RewardDto) {
     return this.http.post<String>('http://localhost:8080/rewardShop/claim/', rewardDto);
   }

@@ -62,7 +62,10 @@ export class RewardShopComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.balanceAmount = 54;
+    this.balanceAmount
+    this.service.getCustomer(sessionStorage.getItem('custID')).subscribe((res)=>{
+      this.balanceAmount=res.rewardBal;
+    });
     this.service.getAllRewards().subscribe((res) => {
         console.log(res);
         this.REWARD_ITEM = res;
