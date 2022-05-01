@@ -15,7 +15,10 @@ export class RandomizerService {
     return this.httpClient.get(this.REST_API_SERVER);
   }
 
+  public getPendingEvent(Id: String){
+    return this.httpClient.get(this.REST_API_SERVER+"/event/list/verifyPending/"+Id);
+  }
   public sendGetAllTags(Id: String){
-    return this.httpClient.get("http://localhost:8080/event/list/allTagId/"+Id);
+    return this.httpClient.get(this.REST_API_SERVER+"/event/list/allTagId/"+Id);
   }
 }

@@ -29,7 +29,7 @@ interface cardValues{
   templateUrl: './randomizer.component.html',
   styleUrls: ['./randomizer.component.scss']
 })
-export class RandomizerComponent implements OnInit {
+export class RandomizerComponent implements OnInit,AfterViewInit {
   faStar = faStar;
   now: Date = new Date();
   cardValues: cardValues = {};
@@ -46,16 +46,22 @@ export class RandomizerComponent implements OnInit {
   ngOnInit(): void {
     this.randomTriggered=false;
     this.custId=sessionStorage.getItem('custID');
-      this.randomizerService.sendGetAllTags(this.custId).subscribe(
+    this.randomizerService.sendGetAllTags(this.custId).subscribe(
         (data: any)=>{console.log(data);this.eventList=data;}) ;
   }
-
+  ngAfterViewInit(): void {
+    this.randomizerService.getPendingEvent(this.custId).subscribe(
+      (data:any)=>{
+        console.log(data);
+         if(!data.allowRandomizing)
+         {
+           alert("There is a Pending Event Completion");
+           this.router.navigateByUrl("/event/detail?eventID="+data.eventId);
+         }
+      });
+  }
   onRandomize(){
-    //if(sessionStorage.getItem('randomize')){
-      alert('Event already chosen');
-    //}else{
-      this.randomizeFunctionality();
-    //}
+    this.randomizeFunctionality();
   }
   onRefresh(){
     if(this.navigator>=this.eventList.length)
