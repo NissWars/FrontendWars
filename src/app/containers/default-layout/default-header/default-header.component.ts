@@ -18,12 +18,9 @@ export class DefaultHeaderComponent extends HeaderComponent {
   eventId: any;
   panelId: any;
   custId: any;
-  queryParams: Params = {customerID: '1234' }
   constructor(private classToggler: ClassToggleService,private route: Router) {
     super();
     console.log(sessionStorage.getItem('custID'));
-    this.custId = sessionStorage.getItem('custID')
-    this.queryParams['customerID']={customerID: this.custId}
   }
   onPanel(test:any){
     this.panelId=test;

@@ -45,9 +45,9 @@ export class EventDetailComponent implements OnInit {
       this.currentEvent = data;
       console.log(data);
       this.registrationStatus = this.currentEvent.currentUserRegistrationStatus;
-
       this.showRegisterButton = (this.registrationStatus == constants.registrationStatus.NEW); 
-      this.showPaymentButton = (this.registrationStatus == constants.registrationStatus.REGISTERED); (this.registrationStatus == constants.registrationStatus.EVENT_FINISHED); 
+      this.showPaymentButton = (this.registrationStatus == constants.registrationStatus.REGISTERED); 
+      this.showFeedbackButton = (this.registrationStatus == constants.registrationStatus.EVENT_FINISHED); 
       this.showCancelButton = ((this.registrationStatus == constants.registrationStatus.REGISTERED) ||
                                     (this.registrationStatus == constants.registrationStatus.PAID)); 
       console.log(this.currentEvent);
@@ -64,6 +64,9 @@ export class EventDetailComponent implements OnInit {
 
   cancelEvent(): void {
     console.log("cancel");
+        this.eventService.cancelEvent(this.eventID, this.testUserID).then((data) => {
+      console.log(data);
+    });
   }
 
   writeFeedback(): void {

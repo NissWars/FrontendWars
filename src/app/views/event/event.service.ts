@@ -13,10 +13,11 @@ import {PaymentDTO} from './event-detail/event-detail.component';
   providedIn: 'root'
 })
 export class EventService {
-  private eventDetailUrl = "details/";
-  private eventRegisterUrl = "register/";
-  private eventGetListUrl = "list/conditions/";
+  private eventDetailUrl = "details";
+  private eventRegisterUrl = "register";
+  private eventGetListUrl = "list/conditions";
   private eventPaymentUrl = "register/add"
+  private eventCancelUrl = "cancel";
   httpClient: any;
 
   constructor(private http: HttpClient, @Inject(LOCALE_ID) private locale: string) { 
@@ -67,6 +68,20 @@ export class EventService {
           events.push(this.readEventFromData(data[i]));
         }
 
+        resolve(data);
+      });
+    });
+  }
+
+  public cancelEvent(eventID: string, userID: string) {
+    let urlToDelete = constants.backendBaseUrl + constants.backendEventUrl + this.eventCancelUrl;
+
+    return new Promise((resolve) => {
+      let queryParams = new HttpParams();
+      queryParams = queryParams.append("eventID", eventID);
+      queryParams = queryParams.append("userID", userID);
+
+      this.http.delete(urlToDelete, {params: queryParams}).pipe(take(1)).subscribe(data => {
         resolve(data);
       });
     });
