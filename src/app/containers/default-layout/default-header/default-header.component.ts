@@ -28,7 +28,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
     //hide header for Login page  
     route.events.forEach((event) => { 
       if (event instanceof NavigationStart) {
-        if (event['url'] == '/login') {
+        if ((event['url'] == '/login') || (event['url'] == '/register') || (event['url'] == '/registerOrganizer')) {
           this.displayHeader = false;
         } else {
           this.displayHeader = true;
