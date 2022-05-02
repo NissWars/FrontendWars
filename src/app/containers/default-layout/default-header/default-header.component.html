@@ -1,6 +1,6 @@
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
-<ng-container>
-  <c-container [fluid]="true">
+<ng-container *ngIf="displayHeader"> <!--hide header from login page-->
+  <c-container [fluid]="true" >
     <c-card-body>
       <c-nav variant="tabs">
         <c-nav-item>
@@ -40,6 +40,7 @@
           </a>
         </c-nav-item>
       </c-nav>
+      
       <c-tab-content #tabContent1="cTabContent" [activeTabPaneIdx]="panelId" cRounded="bottom">
         <c-tab-pane class="p-3 preview" role="tabpanel">
          </c-tab-pane>
