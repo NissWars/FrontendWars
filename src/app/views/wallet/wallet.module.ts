@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IconModule } from '@coreui/icons-angular';
 import { WalletRoutingModule } from './wallet-routing.module';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule,MatPaginator } from '@angular/material/paginator';
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -18,6 +20,7 @@ import {
   ModalModule
 } from '@coreui/angular';
 import { WalletComponent } from './wallet.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [WalletComponent],
@@ -37,7 +40,10 @@ import { WalletComponent } from './wallet.component';
     PaginationModule,
     IconModule,
     ModalModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class WalletModule { }

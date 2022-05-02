@@ -53,11 +53,14 @@
                     (click)="makePayment()" *ngIf="showPaymentButton">Payment</button>
                 <button type="button" class="btn btn-danger button1" 
                     (click)="cancelEvent()" *ngIf="showCancelButton">cancel</button>
-                <!--button type="button" class="btn btn-secondary button1">back</button-->
+                <button type = "button" class="btn btn-primary button1"
+                    (click)="viewFeedbacks()">View Feedback</button>
+                <button type="button" class="btn btn-secondary button1"
+                    (click)="goback()" >back</button>
             </div>
         </div>
         <div class = "col">
-            <div [app-showfeedback]="currentEvent.eventSerialNumber"></div>
+            <!--div [app-showfeedback]="currentEvent.eventSerialNumber"></div-->
         </div>
     </div>
 </div>

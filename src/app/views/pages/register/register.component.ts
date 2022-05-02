@@ -16,11 +16,11 @@ export interface RegisterDTO{
   email?: any;
   pw?: any;
   pw2?: any;
-  tag1?: any;
-  tag2?: any;
-  tag3?: any;
-  tag4?: any;
-  tag5?: any;
+  tag1?:any;
+  tag2?:any;
+  tag3?:any;
+  tag4?:any;
+  tag5?:any;
   registerSuccess?: boolean;
 }
 

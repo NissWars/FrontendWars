@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl , Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { feedBackService } from './feedback.service';
 import { StarRatingColor } from '../star-rating/star-rating.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,8 @@ import { SuccessModalComponent } from '../modal/success-modal.component';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
-
+  eventID: string;
+  eventSerialNumber: string;
   loggedUser: string;
   form: FormGroup;
   rating:number = 1;
@@ -25,10 +26,17 @@ export class FeedbackComponent implements OnInit {
   fd = new FormData();
   
     constructor(private service :feedBackService,
-      private router: Router, protected modalService: NgbModal) { }
+      private router: Router, protected modalService: NgbModal,
+      private activatedRoute: ActivatedRoute) { }
   
     ngOnInit(): void {
-      //this.loggedUser = sessionStorage.getItem('loggedUser');
+      this.loggedUser = sessionStorage.getItem('loggedUser');
+      this.activatedRoute.queryParams.subscribe(params => {
+        if (params.hasOwnProperty("eventID")) {
+          this.eventID = params["eventID"];
+          this.eventSerialNumber = params["eventSerialNumber"];
+        }
+      });
       this.form = new FormGroup({          
         ratings: new FormControl(null, null),
         comments: new FormControl(null,Validators.required),
@@ -43,10 +51,9 @@ export class FeedbackComponent implements OnInit {
       console.log(data);
       data.value.ratings = this.rating;
 
-      this.fd.append('eventSerialNumber','1');
+      this.fd.append('eventSerialNumber', this.eventSerialNumber);
+      this.fd.append('eventID', this.eventID);
       this.fd.append('customerID','20220420000000000000');
-
-
       this.fd.append('rating',data.value.ratings);
       this.fd.append('comment',data.value.comments);
       this.fd.append('image',this.form.get('file').value);
@@ -63,6 +70,7 @@ export class FeedbackComponent implements OnInit {
         if(action === 'yes') {
           this.service.saveFeedBack(this.fd).subscribe(resp => {
             this.handleSuccessMessage('Record has been updated successfully');
+              window.history.back();
           });
         }
       }, () => {});
@@ -104,7 +112,7 @@ export class FeedbackComponent implements OnInit {
       successModal.componentInstance.alertType = 'alert-success';
       successModal.componentInstance.content = message;
       successModal.result.then((success) => {
-        window.location.reload();
+        //this.router.navigateByUrl('/rewardShop');
       }, (error) =>{ window.location.reload();})
     }
   

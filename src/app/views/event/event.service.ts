@@ -7,6 +7,7 @@ import * as constants from '../../classes/constants';
 import * as moment from 'moment';
 import { Event } from '../../classes/event';
 import { Tag } from '../../classes/tag';
+import {PaymentDTO} from './event-detail/event-detail.component';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,11 @@ export class EventService {
   private eventDetailUrl = "details/";
   private eventRegisterUrl = "register/";
   private eventGetListUrl = "list/conditions/";
+  private eventPaymentUrl = "register/add"
+  httpClient: any;
 
   constructor(private http: HttpClient, @Inject(LOCALE_ID) private locale: string) { 
-
+      console.log()
   }
 
   public getEventDetail(eventID: string): any {
@@ -49,6 +52,10 @@ export class EventService {
     });
   }
 
+  public makePayment(detail: PaymentDTO) {
+    let urlToPost = constants.backendBaseUrl + constants.backendPaymentUrl + this.eventPaymentUrl
+    return this.http.post(urlToPost, detail);
+  }
   public getEventListByParam(queryParams: HttpParams): any {
     let urlToGet = constants.backendBaseUrl + constants.backendEventUrl + this.eventGetListUrl;
 

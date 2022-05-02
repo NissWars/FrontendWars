@@ -19,7 +19,7 @@ export class RegisterService {
   }
 
   public sendGetAllCustomers(){
-    return this.httpClient.get(this.REST_API_SERVER+"customers/all");
+    return this.httpClient.get(this.REST_API_SERVER+"/customers/all");
   }
 
   public sendGet1Customer(Id: String){
