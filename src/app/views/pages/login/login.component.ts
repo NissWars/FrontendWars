@@ -24,10 +24,7 @@ export class LoginComponent {
   pw: any;
   detail: LoginDTO = {login:false};
 
-  constructor(private loginService: LoginService, private router: Router) {
-
-  
-    }
+  constructor(private loginService: LoginService, private router: Router) {}
 
   saveLogin() {
     console.log('login...');
@@ -47,12 +44,8 @@ export class LoginComponent {
       else{
         alert('Incorrect Email or Password');
       }
-
-
-
     },response=>{console.log(response);});
+
   }
-
-
 
 }

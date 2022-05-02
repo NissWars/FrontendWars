@@ -9,6 +9,7 @@ import {RegisterDTO} from './register.component';
 export class RegisterService {
 
   private REST_API_SERVER = "http://localhost:8080"
+  
   private ADD_URL = "http://localhost:8080/customers/add"
 
   constructor(private httpClient: HttpClient) { }
@@ -18,16 +19,19 @@ export class RegisterService {
   }
 
   public sendGetAllCustomers(){
-    return this.httpClient.get("http://localhost:8080/customers/all");
+    return this.httpClient.get(this.REST_API_SERVER+"customers/all");
   }
 
   public sendGet1Customer(Id: String){
-    return this.httpClient.get("http://localhost:8080/customers/find/" + Id);
+    return this.httpClient.get(this.REST_API_SERVER+"/customers/find/" + Id);
   }
 
-  saveSubmit(detail: RegisterDTO) {
-    console.log(detail);
-    return this.httpClient.post<RegisterDTO>(this.ADD_URL, detail).subscribe((val)=>{console.log(val)},response=>{console.log(response);});
+  onSubmit1(registerdto: RegisterDTO) {
+    console.log(registerdto);
+    return this.httpClient.post<RegisterDTO>(this.ADD_URL+'?email='+registerdto.email+'&pw='+registerdto.pw+'&pw2='+registerdto.pw2
+    +'&firstName='+registerdto.firstName+'&lastName='+registerdto.lastName+'&username='+registerdto.username+'&dob='+registerdto.dob+'&mobile='+registerdto.mobile
+    +'&tag1='+registerdto.tag1 +'&tag2='+registerdto.tag2 +'&tag3='+registerdto.tag3 +'&tag4='+registerdto.tag4 +'&tag5='+registerdto.tag5
+    ,registerdto);
   }
 
 

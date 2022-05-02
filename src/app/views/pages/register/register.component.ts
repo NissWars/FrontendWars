@@ -16,6 +16,12 @@ export interface RegisterDTO{
   email?: any;
   pw?: any;
   pw2?: any;
+  tag1?: any;
+  tag2?: any;
+  tag3?: any;
+  tag4?: any;
+  tag5?: any;
+  registerSuccess?: boolean;
 }
 
 @Component({
@@ -42,9 +48,9 @@ export class RegisterComponent{
   Dining:string;
   Sports:string;
   //saveboxAgree:boolean;
-  registerdto: RegisterDTO={};
+  registerdto: RegisterDTO={registerSuccess: false};
 
-  constructor( ) { }
+  constructor(private registerService: RegisterService, private router: Router ) { }
 
   //ngOnInit(): void { } //kerrichanged
   onSubmit1() {
@@ -74,6 +80,42 @@ export class RegisterComponent{
     this.options.emit(emittedOptions);
    // alert("Preferences selected: \n\n" + JSON.stringify(emittedOptions, null, 4));
 
+
+
+
+  
+    console.log('Saving registration...');
+    this.registerdto.firstName= this.firstname;
+    this.registerdto.lastName = this.lastname;
+    this.registerdto.username = this.username;
+    this.registerdto.mobile = this.mobile;
+    this.registerdto.dob = this.dob;
+    this.registerdto.email = this.email;
+    this.registerdto.pw = this.pw;
+    this.registerdto.pw2 = this.pw2;
+    this.registerdto.tag1 = this.Symposiums;
+    this.registerdto.tag2 = this.Exhibitions;
+    this.registerdto.tag3 = this.Concerts;
+    this.registerdto.tag4 = this.Dining;
+    this.registerdto.tag5 = this.Sports;
+
+    //service 
+    this.registerService.onSubmit1(this.registerdto).subscribe((val:any)=>{
+      this.registerdto = val;
+      if (this.registerdto.registerSuccess == true){
+        sessionStorage.setItem('email',this.registerdto.email);
+        this.router.navigate(['/accountCreation']);
+      }
+      else{
+        alert('User already exists!');
+      }
+    },response=>{console.log(response);});
+
+  
+
+
+
+   
   }
   
   //kerrichanged

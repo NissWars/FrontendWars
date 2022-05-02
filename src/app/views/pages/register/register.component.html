@@ -181,7 +181,7 @@
 
             </c-col>
             <c-col [xs]="12">
-            <button cButton class="me-1" color="primary" type="submit" routerLink="/accountCreation"> <!--two-way data binding completed-->
+            <button cButton class="me-1" color="primary" type="submit" (click)="onSubmit1()"> <!--two-way data binding completed-->
               Submit 
             </button>
             <button (click)="onReset1()" cButton color="secondary" type="reset">

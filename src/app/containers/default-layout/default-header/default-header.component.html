@@ -34,6 +34,12 @@
             Reward Shop
           </a>
         </c-nav-item>
+        <c-nav-item>
+          <a [cTabContent]="tabContent1" routerLink="./login" [tabPaneIdx]="4" cNavLink>
+            <svg cIcon class="me-2" name="cilCode"></svg>
+            Logout
+          </a>
+        </c-nav-item>
       </c-nav>
       <c-tab-content #tabContent1="cTabContent" [activeTabPaneIdx]="panelId" cRounded="bottom">
         <c-tab-pane class="p-3 preview" role="tabpanel">
