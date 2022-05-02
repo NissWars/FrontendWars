@@ -58,14 +58,15 @@ export class EventDetailComponent implements OnInit {
     console.log("register");
     this.eventService.registerToEvent(this.eventID, this.testUserID).then((data) => {
       console.log(data);
+      window.location.reload();
     });
-    this.showPaymentButton = (this.registrationStatus == constants.registrationStatus.REGISTERED); (this.registrationStatus == constants.registrationStatus.EVENT_FINISHED); 
   }
 
   cancelEvent(): void {
     console.log("cancel");
-        this.eventService.cancelEvent(this.eventID, this.testUserID).then((data) => {
+    this.eventService.cancelEvent(this.eventID, this.testUserID).then((data) => {
       console.log(data);
+      window.location.reload();
     });
   }
 
@@ -91,6 +92,7 @@ export class EventDetailComponent implements OnInit {
       console.log(val);
       if (this.paymentDetails.verify == true){
         alert('Payment Was Successful');
+        window.location.reload();
       }
       else{
         alert('Insufficient Balance');

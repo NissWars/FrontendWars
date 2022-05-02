@@ -6,15 +6,17 @@ import { RegisterService } from './register.service';
 import { DatePipe } from '@angular/common'
 import { stringify } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
+import * as constants from '../../../classes/constants';
+import * as moment from 'moment';
 
 export interface RegisterDTO{
   firstName?:String;
   lastName?:String;
-  username?:String;
+  userName?:String;
   mobile?: number;
-  dob?: number;
-  email?: any;
-  pw?: any;
+  dateOfBirth?: string;
+  emailAddress?: any;
+  password?: any;
   pw2?: any;
   tag1?:any;
   tag2?:any;
@@ -38,7 +40,7 @@ export class RegisterComponent{
   lastname: any;
   username: any;
   mobile: number;
-  dob: number;
+  dob: string;
   email: any;
   pw: any;
   pw2: any;
@@ -50,7 +52,8 @@ export class RegisterComponent{
   //saveboxAgree:boolean;
   registerdto: RegisterDTO={registerSuccess: false};
 
-  constructor(private registerService: RegisterService, private router: Router ) { }
+  constructor(private registerService: RegisterService, private router: Router,
+    private datepipe: DatePipe ) { }
 
   //ngOnInit(): void { } //kerrichanged
   onSubmit1() {
@@ -59,7 +62,7 @@ export class RegisterComponent{
     console.log(this.lastname);
     console.log(this.username);
     console.log(this.mobile);
-    console.log(this.dob);
+    console.log(this.datepipe.transform(moment(this.dob, constants.DATETIME_FORMAT).toDate(),constants.DATETIME_FORMAT_TO_BACKEND));
     console.log(this.email);
     console.log(this.pw);
     console.log(this.pw2);
@@ -80,18 +83,14 @@ export class RegisterComponent{
     this.options.emit(emittedOptions);
    // alert("Preferences selected: \n\n" + JSON.stringify(emittedOptions, null, 4));
 
-
-
-
-  
     console.log('Saving registration...');
     this.registerdto.firstName= this.firstname;
     this.registerdto.lastName = this.lastname;
-    this.registerdto.username = this.username;
+    this.registerdto.userName = this.username;
     this.registerdto.mobile = this.mobile;
-    this.registerdto.dob = this.dob;
-    this.registerdto.email = this.email;
-    this.registerdto.pw = this.pw;
+    this.registerdto.dateOfBirth = this.datepipe.transform(moment(this.dob, constants.DATETIME_FORMAT).toDate(),constants.DATETIME_FORMAT_TO_BACKEND);
+    this.registerdto.emailAddress = this.email;
+    this.registerdto.password = this.pw;
     this.registerdto.pw2 = this.pw2;
     this.registerdto.tag1 = this.Symposiums;
     this.registerdto.tag2 = this.Exhibitions;
@@ -102,20 +101,14 @@ export class RegisterComponent{
     //service 
     this.registerService.onSubmit1(this.registerdto).subscribe((val:any)=>{
       this.registerdto = val;
-      if (this.registerdto.registerSuccess == true){
-        sessionStorage.setItem('email',this.registerdto.email);
+      if (val != null){
+        sessionStorage.setItem('email',this.registerdto.emailAddress);
         this.router.navigate(['/accountCreation']);
       }
       else{
         alert('User already exists!');
       }
     },response=>{console.log(response);});
-
-  
-
-
-
-   
   }
   
   //kerrichanged

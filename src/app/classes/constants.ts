@@ -3,6 +3,7 @@ export const backendEventUrl = "event/";
 export const backendPaymentUrl = "payment/"
 
 export const DATETIME_FORMAT = "YYYY/MM/DD HH:mm:ss.SSS";
+export const DATETIME_FORMAT_TO_BACKEND = "yyyy/MM/dd HH:mm:ss.SSS";
 
 export enum registrationStatus {
     NEW = "new",

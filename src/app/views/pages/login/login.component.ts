@@ -39,9 +39,11 @@ export class LoginComponent implements OnInit{
     //service 
     this.loginService.saveLogin(this.detail).subscribe((val:any)=>{
       this.detail = val;
+      console.log(this.detail);
       if (this.detail.login == true){
         console.log(sessionStorage.getItem('custID')); 
         sessionStorage.setItem('custID',this.detail.custId);
+        console.log(sessionStorage.getItem('custID')); 
         this.router.navigateByUrl('/randomizer');
       }
       else{
