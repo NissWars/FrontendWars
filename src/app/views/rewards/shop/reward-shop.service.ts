@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import * as constants from '../../../classes/constants';
 import {HttpErrorHandler, HandleError} from '../../../http-error-handler.service';
 import {catchError} from 'rxjs/operators';
 
@@ -21,7 +22,7 @@ const httpOptions = {
 })
 export class RewardShopService {
 
-  getAllRewardsUrl = 'http://localhost:8080/rewardShop/all';
+  getAllRewardsUrl = constants.backendRewardShopMicroServiceUrl + '/rewardShop/all';
   handleError: HandleError;
   httpClient: any;
   constructor(
@@ -35,11 +36,11 @@ export class RewardShopService {
   }
 
   public getCustomer(Id: String): any {
-    return this.http.get("http://localhost:8080/customers/find/" + Id);
+    return this.http.get(constants.backendRewardShopMicroServiceUrl + "/customers/find/" + Id);
 }
 
   public rewardUpdate(rewardDto: RewardDto) {
-    return this.http.post<String>('http://localhost:8080/rewardShop/claim/', rewardDto);
+    return this.http.post<String>(constants.backendRewardShopMicroServiceUrl + '/rewardShop/claim/', rewardDto);
   }
   
 }
